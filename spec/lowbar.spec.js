@@ -152,5 +152,13 @@ describe('#each', () => {
     expect(spy.secondCall.calledWithExactly('b', 1, 'abc')).to.equal(true);
     expect(spy.thirdCall.calledWithExactly('c', 2, 'abc')).to.equal(true);
   });
+  it('uses different context to this if third argument is passed', () => {
+    const arr = [];
+    function func (i) {
+      this.push(i);
+    }
+    _.each(['a', 'b', 'c'], func, arr); 
+    expect(arr.length).to.equal(3);
+  });
 
 });
