@@ -61,6 +61,17 @@ _.each = (list, iteratee, context=this) => {
   return list;
 
 };
+
+_.indexOf = (list, value) => {
+  let res = -1;
+  for (let i = 0; i<list.length; i++) {
+    if (value === list[i]) {
+      res = i; 
+      break;
+    }
+  }
+  return res;
+};
   
 
 

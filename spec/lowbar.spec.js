@@ -170,3 +170,12 @@ describe('#each', () => {
   });
 
 });
+
+describe('#indexOf', () => {
+  it('it is a function', () => {
+    expect(_.indexOf).to.be.a('function');
+  });
+  it('returns the index of the first instance of the sencond argument', () => {
+    expect(_.indexOf([1,2,3,4,5], 3)).to.equal(2);
+  });
+});
