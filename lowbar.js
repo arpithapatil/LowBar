@@ -27,6 +27,10 @@ _.first = function (list, n) {
     else return [];
   }
 };
+
+_.last = (arr) => {
+  return arr[arr.length-1];
+};
   
 
 

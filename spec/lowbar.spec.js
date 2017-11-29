@@ -85,3 +85,12 @@ describe('#first', () => {
   });
 
 });
+
+describe('#last', () => {
+  it('it is a function', () => {
+    expect(_.last).to.be.a('function');
+  });
+  it('returns the last element of an array', () => {
+    expect(_.last([1,2,3,4,5])).to.equal(5);
+  });
+});
