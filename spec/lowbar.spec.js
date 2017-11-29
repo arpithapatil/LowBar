@@ -178,7 +178,11 @@ describe('#indexOf', () => {
   it('returns the index of the first instance of the sencond argument', () => {
     expect(_.indexOf([1,2,3,4,5], 3)).to.equal(2);
   });
-  
+  it('returns the index of the given target in string', function () {
+    var result = _.indexOf('hello','o');
+    var expected = 4;
+    expect(result).to.equal(expected);
+  });
   it('returns index of first instance of second argument using binary search', () => {
     expect(_.indexOf([1,2,3,4,5], 3, true)).to.equal(2);
     expect(_.indexOf([2,3,1,5,4], 3, true)).to.equal(-1);
