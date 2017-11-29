@@ -1,5 +1,6 @@
 const expect = require('chai').expect;
 const path = require('path');
+const sinon = require('sinon');
 
 
 const _ = require(path.join(__dirname, '../lowbar'));
@@ -117,4 +118,16 @@ describe('#last', () => {
 
   });
 
+});
+
+describe('#each', () => {
+  it('it is a function', () => {
+    expect(_.each).to.be.a('function');
+  });
+  it('calls the iteratee for every item in an array', () => {
+    let spy = sinon.spy();
+    let arr = [1, 2, 3, 4];
+    _.each(arr, spy);
+    expect(spy.callCount).to.equal(4);
+  });
 });
