@@ -5,7 +5,14 @@ _.identity = function (value) {
   return value;
 };
 
-
+_.values = function (list) {
+  if (typeof list !== 'object') return [];
+  if (Array.isArray(list)) {
+    return list;
+  } else {
+    return (Object.values(list));
+  }
+};
   
 
 
