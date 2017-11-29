@@ -63,8 +63,9 @@ _.each = (list, iteratee, context=this) => {
 };
 
 _.indexOf = (list, value, isSorted) => {
+  if (!Array.isArray(list)) return -1;
   let res = -1;
-  const binSearch = (list, value) => {
+  const binSearch = (list, value) => {  
     let low = 0;
     let high = list.length - 1;
     while (low < high) {

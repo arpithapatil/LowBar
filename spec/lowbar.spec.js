@@ -178,13 +178,23 @@ describe('#indexOf', () => {
   it('returns the index of the first instance of the sencond argument', () => {
     expect(_.indexOf([1,2,3,4,5], 3)).to.equal(2);
   });
-  it('returns the index of the given target in string', function () {
-    var result = _.indexOf(['h', 'e', 'l', 'l', 'o'], 'o');
-    var expected = 4;
-    expect(result).to.equal(expected);
-  });
+  
   it('returns index of first instance of second argument using binary search', () => {
     expect(_.indexOf([1,2,3,4,5], 3, true)).to.equal(2);
     expect(_.indexOf([2,3,1,5,4], 3, true)).to.equal(-1);
+  });
+  
+  it('returns -1 if inputs are not passed correctly', function () {
+    expect(_.indexOf([1, 2, 3])).to.equal(-1);
+    expect(_.indexOf(3)).to.equal(-1);
+    expect(_.indexOf()).to.equal(-1);
+    expect(_.indexOf([], 4, true)).to.equal(-1);
+    expect(_.indexOf('', 'h', true)).to.equal(-1);
+    expect(_.indexOf(6)).to.equal(-1);
+    expect(_.indexOf({ 1: 1, 2: 2, 3: 3 })).to.equal(-1);
+  });
+
+  it('returns -1 if target is not in array', function () {
+    expect(_.indexOf([2, 1, 3], 4, false)).to.equal(-1);
   });
 });
