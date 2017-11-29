@@ -62,17 +62,30 @@ _.each = (list, iteratee, context=this) => {
 
 };
 
-_.indexOf = (list, value) => {
+_.indexOf = (list, value, isSorted) => {
   let res = -1;
-  for (let i = 0; i<list.length; i++) {
-    if (value === list[i]) {
-      res = i; 
-      break;
+  const binSearch = (list, value) => {
+    let low = 0;
+    let high = list.length - 1;
+    while (low < high) {
+      let mid = Math.floor((high + low) / 2);
+      if (list[mid] === value) return mid;
+      if (value < list[mid]) high = mid - 1;
+      else low = mid + 1;
+    }
+    return -1; 
+  };
+  if (isSorted) res = binSearch(list, value); 
+  else {
+    for (let i = 0; i<list.length; i++) {
+      if (value === list[i]) {
+        res = i; 
+        break;
+      }
     }
   }
   return res;
 };
-  
 
 
 
