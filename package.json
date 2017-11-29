@@ -1,0 +1,30 @@
+{
+  "name": "lowbar",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "mocha ./spec/*",
+    "lint": "eslint ./",
+    "posttest": "npm run lint",
+    "precommit": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arpithapatil/LowBar.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arpithapatil/LowBar/issues"
+  },
+  "homepage": "https://github.com/arpithapatil/LowBar#readme",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "eslint": "^4.12.0",
+    "mocha": "^4.0.1",
+    "object.values": "^1.0.4",
+    "path": "^0.12.7",
+    "sinon": "^4.1.2"
+  }
+}
