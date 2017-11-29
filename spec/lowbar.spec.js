@@ -53,3 +53,12 @@ describe('#values', () => {
     expect(_.values({ 1: 1, 2: 2, 3: 3 })).to.eql([1, 2, 3]);
   });
 });
+
+describe('#first', () => {
+  it('it is a function', () => {
+    expect(_.first).to.be.a('function');
+  });
+  it('returns the first element of an array', () => {
+    expect(_.first([1,2,3,4])).to.equal(1);
+  });
+});

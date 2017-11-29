@@ -13,6 +13,10 @@ _.values = function (list) {
     return (Object.values(list));
   }
 };
+
+_.first = (arr) => {
+  return arr[0];
+};
   
 
 
