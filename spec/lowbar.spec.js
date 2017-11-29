@@ -70,5 +70,18 @@ describe('#first', () => {
     expect(_.first(1)).to.equal(undefined);
     expect(_.first(true)).to.equal(undefined);
   });
+  it('returns an empty array when list is not an array or string and n is a number', () => {
+    expect(_.first({ 1: 1, 2: 2, 3: 3 }, 1)).to.eql([]);
+    expect(_.first(1, 1)).to.eql([]);
+    expect(_.first(true, 1)).to.eql([]);
+    expect(_.first(null, 1)).to.eql([]);
+  });
+
+  it('returns the first element of list, n will return the first n elements of list.', () => {
+    expect(_.first('abc', 1)).to.eql(['a']);
+    expect(_.first([1, 2, 3], 1)).to.eql([1]);
+    expect(_.first([1, 2, 3, 4, 5, 6], 4)).to.eql([1, 2, 3, 4]);
+    expect(_.first('hello')).to.eql('h');
+  });
 
 });

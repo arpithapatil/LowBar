@@ -19,6 +19,13 @@ _.first = function (list, n) {
   if (typeof list !== 'string' && typeof list !== 'object') return;
   
   if (!n) return list[0];
+  else {
+    if (typeof list === 'string')
+      return list.split('').slice(0, n);
+    else if (Array.isArray(list))
+      return list.slice(0, n);
+    else return [];
+  }
 };
   
 
