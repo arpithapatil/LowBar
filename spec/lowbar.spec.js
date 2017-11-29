@@ -93,4 +93,14 @@ describe('#last', () => {
   it('returns the last element of an array', () => {
     expect(_.last([1,2,3,4,5])).to.equal(5);
   });
+  it('returns undefined when arguements are not given', () => {
+    expect(_.last()).to.equal(undefined);
+  });
+
+  it('returns undefined when list is not an array or string and n not given', () => {
+    expect(_.last({ 1: 1, 2: 2, 3: 3 })).to.equal(undefined);
+    expect(_.last(1)).to.equal(undefined);
+    expect(_.last(true)).to.equal(undefined);
+  });
+
 });

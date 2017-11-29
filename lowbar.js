@@ -28,8 +28,11 @@ _.first = function (list, n) {
   }
 };
 
-_.last = (arr) => {
-  return arr[arr.length-1];
+_.last = function (list, n) {
+  if ((typeof list === 'number' || typeof list === 'boolean') && typeof n === 'number') return [];
+  if (typeof list !== 'string' && typeof list !== 'object') return;
+  
+  if (!n) return list[list.length - 1];
 };
   
 
