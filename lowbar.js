@@ -14,8 +14,11 @@ _.values = function (list) {
   }
 };
 
-_.first = (arr) => {
-  return arr[0];
+_.first = function (list, n) {
+  if ((typeof list === 'number' || typeof list === 'boolean') && typeof n === 'number') return [];
+  if (typeof list !== 'string' && typeof list !== 'object') return;
+  
+  if (!n) return list[0];
 };
   
 

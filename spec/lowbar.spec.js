@@ -61,4 +61,14 @@ describe('#first', () => {
   it('returns the first element of an array', () => {
     expect(_.first([1,2,3,4])).to.equal(1);
   });
+  it('returns undefined when arguements are not given', () => {
+    expect(_.first()).to.equal(undefined);
+  });
+
+  it('returns undefined when list is not an array or string and n is not given', () => {
+    expect(_.first({ 1: 1, 2: 2, 3: 3 })).to.equal(undefined);
+    expect(_.first(1)).to.equal(undefined);
+    expect(_.first(true)).to.equal(undefined);
+  });
+
 });
