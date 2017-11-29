@@ -26,3 +26,30 @@ describe('#identity', () => {
   });
 });
 
+describe('#values', () => {
+    it('it is a function', () => {
+      expect(_.values).to.be.a('function');
+    });
+  
+    it('returns an empty array when input is not an object', () => {
+      expect(_.values()).to.eql([]);
+      expect(_.values('abc')).to.eql([]);
+      expect(_.values(345)).to.eql([]);
+      expect(_.values(undefined)).to.eql([]);
+    });
+  
+    it('return all of the values of the list in an array', () => {
+      expect(_.values([1, 2, 3])).to.eql([1, 2, 3]);
+      expect(_.values({ 1: 1, 2: 2, 3: 3 })).to.eql([1, 2, 3]);
+    });
+  
+    it('Output is an array', () => {
+      expect(_.values([1, 2, 3])).to.eql([1, 2, 3]);
+      expect(_.values({ 1: 1, 2: 2, 3: 3 })).to.eql([1, 2, 3]);
+    });
+  
+    it('Input is an object', () => {
+      expect(_.values([1, 2, 3])).to.eql([1, 2, 3]);
+      expect(_.values({ 1: 1, 2: 2, 3: 3 })).to.eql([1, 2, 3]);
+    });
+  });
