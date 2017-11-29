@@ -102,5 +102,19 @@ describe('#last', () => {
     expect(_.last(1)).to.equal(undefined);
     expect(_.last(true)).to.equal(undefined);
   });
+  it('returns an empty array when list is not an array or string and n is a number', () => {
+    expect(_.last({ 1: 1, 2: 2, 3: 3 }, 1)).to.eql([]);
+    expect(_.last(1, 1)).to.eql([]);
+    expect(_.last(true, 1)).to.eql([]);
+    expect(_.last(null, 1)).to.eql([]);
+  });
+
+  it('returns the last element of list, n will return the last n elements of list.', () => {
+    expect(_.last('abc', 1)).to.eql(['c']);
+    expect(_.last([1, 2, 3], 1)).to.eql([3]);
+    expect(_.last([1, 2, 3, 4, 5, 6], 4)).to.eql([3, 4, 5, 6]);
+    expect(_.last('hello')).to.eql('o');
+
+  });
 
 });

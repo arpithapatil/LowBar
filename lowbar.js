@@ -33,6 +33,14 @@ _.last = function (list, n) {
   if (typeof list !== 'string' && typeof list !== 'object') return;
   
   if (!n) return list[list.length - 1];
+  else {
+    if (typeof list === 'string')
+      return list.split('').slice(-n);
+    else if (Array.isArray(list))
+      return list.slice(-n);
+    else return [];
+
+  }
 };
   
 
