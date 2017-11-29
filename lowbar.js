@@ -44,16 +44,20 @@ _.last = function (list, n) {
 };
 
 _.each = (list, iteratee) => {
-    if (Array.isArray(list)){
-        for (let i = 0; i<list.length; i++) {
-            iteratee(list[i], i, list);
-        }
+  if (typeof list === 'string') {
+    for (var i = 0; i < list.length; i++)
+      iteratee(list[i], i, list);
+  }
+  if (Array.isArray(list)){
+    for (let i = 0; i<list.length; i++) {
+      iteratee(list[i], i, list);
     }
-    if (typeof list === 'object' && !Array.isArray(list)) {
-        for (let key in list) {
-            iteratee(list[key], key, list); 
-        }
+  }
+  if (typeof list === 'object' && !Array.isArray(list)) {
+    for (let key in list) {
+      iteratee(list[key], key, list); 
     }
+  }
 
 };
   

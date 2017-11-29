@@ -145,4 +145,12 @@ describe('#each', () => {
     expect(spy.secondCall.calledWithExactly(2, 'two', { one: 1, two: 2, three: 3 })).to.equal(true);
     expect(spy.thirdCall.calledWithExactly(3, 'three', { one: 1, two: 2, three: 3 })).to.equal(true);
   });
+  it('calls the iteratee passsing each element of string as the 1st argument', function () {
+    const spy = sinon.spy();
+    _.each('abc', spy);
+    expect(spy.firstCall.calledWithExactly('a', 0, 'abc')).to.equal(true);
+    expect(spy.secondCall.calledWithExactly('b', 1, 'abc')).to.equal(true);
+    expect(spy.thirdCall.calledWithExactly('c', 2, 'abc')).to.equal(true);
+  });
+
 });
