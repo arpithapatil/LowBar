@@ -160,5 +160,13 @@ describe('#each', () => {
     _.each(['a', 'b', 'c'], func, arr); 
     expect(arr.length).to.equal(3);
   });
+  it('returns list if passed list is number or null', function () {
+    expect(_.each(23)).to.equal(23);
+    expect(_.each(null)).to.equal(null);
+  });
+
+  it('returns undefined if list is undefined', function () {
+    expect(_.each(undefined)).to.equal(undefined);
+  });
 
 });

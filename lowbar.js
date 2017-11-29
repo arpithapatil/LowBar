@@ -58,6 +58,7 @@ _.each = (list, iteratee, context=this) => {
       iteratee.call(context, list[key], key, list); 
     }
   }
+  return list;
 
 };
   
