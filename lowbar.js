@@ -45,7 +45,7 @@ _.last = function (list, n) {
 
 _.each = (list, iteratee) => {
   for (let i = 0; i<list.length; i++) {
-    iteratee(list[i]);
+    iteratee(list[i], i, list);
   }
 };
   
