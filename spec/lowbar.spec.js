@@ -471,10 +471,14 @@ describe('#reduce', () => {
   });
 
   it('reduces array to one number', () => {
-    expect(_.reduce([1,2,3], (acc, num) => acc + num, 0)).to.equal(6);
+    expect(_.reduce([1, 2, 3], (acc, num) => acc + num, 0)).to.equal(6);
   });
 
   it('reduces array to one number when no acc is passed', () => {
-    expect(_.reduce([1,2,3], (acc, num) => acc + num)).to.equal(6);
+    expect(_.reduce([1, 2, 3], (acc, num) => acc + num)).to.equal(6);
+  });
+  
+  it('returns reduced array', () => {
+    expect(_.reduce([1, 2, 3], (acc, num) => acc.concat(num * 2), [])).to.eql([2, 4, 6]);
   });
 });

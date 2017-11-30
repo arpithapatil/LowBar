@@ -151,13 +151,14 @@ _.pluck = (list, propertyName) => _.map(list, (item) => item[propertyName]);
 
 _.reduce = (list, iteratee, acc) => {
   if (!acc) {
-    acc = list[0]; 
-    list = list.slice(1); 
+    acc = list[0];
+    list = list.slice(1);
   }
-  _.each(list, (item) => {
+  _.each(list, (item
+  ) => {
     acc = iteratee(acc, item);
   });
-  return acc; 
+  return acc;
 };
 
 
