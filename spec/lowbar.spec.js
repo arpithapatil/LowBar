@@ -390,5 +390,22 @@ describe('#map', () => {
     }
     expect(_.map(input, changeCase)).to.eql(['A', 'P', 'P', 'L', 'E']);
   });
+
+  it('returns an empty array if inputs are not passed correctly', function () {
+    const fn = function (n) {
+      return n * 2;
+    };
+    expect(_.map()).to.eql([]);
+    expect(_.map(23, fn)).to.eql([]);
+    expect(_.map(undefined, fn)).to.eql([]);
+    expect(_.map(null, fn)).to.eql([]);
+    expect(_.map('', fn)).to.eql([]);
+    expect(_.map([], fn)).to.eql([]);
+    expect(_.map({}, fn)).to.eql([]);
+  });
+
+  it('returns NaN for nested arrays', function () {
+    expect(_.map([1, 2, 3, 4, [5, 6, 7], 8, 9], function (n) { return n * n; })).to.eql([1, 4, 9, 16, NaN, 64, 81]);
+  });
 });
   
