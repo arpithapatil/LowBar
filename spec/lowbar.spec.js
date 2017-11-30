@@ -202,3 +202,15 @@ describe('#indexOf', () => {
     expect(_.indexOf([2, 1, 3], 4, false)).to.equal(-1);
   });
 });
+
+describe('#filter', function () {
+  it('is a function', function () {
+    expect(_.filter).to.be.a('function');
+  });
+  
+  it('returns an array of true elements for the given array', function () {
+    expect(_.filter([1, 2, 3, 4, 5, 6], function check(num) { return num % 2 === 0; })).to.eql([2, 4, 6]);
+    expect(_.filter([2, 4, 5, 6, 10, 11], function check(num) { return num % 2 === 0; })).to.eql([2, 4, 6, 10]);
+  });
+});
+  

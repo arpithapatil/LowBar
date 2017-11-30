@@ -89,6 +89,14 @@ _.indexOf = (list, value, isSorted) => {
   return res;
 };
 
+_.filter = (list, predicate) => {
+  const res = []; 
+  _.each(list, (item) => {
+    if (predicate(item)) res.push(item);
+  });
+  return res;
+};
+
 
 
 
