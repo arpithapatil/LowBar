@@ -183,6 +183,15 @@ _.some = (list, predicate, context = this) => {
   return res;
 };
 
+_.extends = (start, ...objects) => {
+  return _.reduce(objects, (acc, item) => {
+    for (let key in item) {
+      acc[key] = item[key];
+    }
+    return acc;
+  }, start);
+};
+
 
 
 

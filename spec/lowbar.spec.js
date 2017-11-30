@@ -570,3 +570,14 @@ describe('#some', () => {
     expect(_.some(undefined)).to.equal(false);
   });
 });
+
+describe('#extends', () => {
+  it('is a function', function () {
+    expect(_.extends).to.be.a('function');
+  });
+  it('returns joined object ', () => {
+    expect(_.extends({a:1, b:2, c:3}, {a:4, d:5})).to.eql({a:4, b:2, c:3, d:5});
+    expect(_.extends({a:1, b:2, c:3}, {a:4, d:5}, {e:6})).to.eql({a:4, b:2, c:3, d:5, e:6});
+    
+  });
+});
