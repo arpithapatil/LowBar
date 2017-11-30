@@ -358,4 +358,14 @@ describe('#uniq', function () {
   });
 
 });
+
+describe('#map', () => {
+  it('is a function', function () {
+    expect(_.map).to.be.a('function');
+  });
+  it('returns list entered as first argument when no iteratee is passed', () => {
+    expect(_.map([1,2,3,4,5])).to.eql([1,2,3,4,5]);
+  });
+  
+});
   

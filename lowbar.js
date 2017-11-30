@@ -132,6 +132,15 @@ _.uniq = (list, isSorted) => {
 };
 
 
+_.map = (list, iteratee=_.identity) => {
+  const res = []; 
+  _.each(list, (item) => {
+    res.push(iteratee(item));
+  });
+  return res;
+};
+
+
 
 
 
