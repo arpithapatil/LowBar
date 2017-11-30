@@ -477,8 +477,19 @@ describe('#reduce', () => {
   it('reduces array to one number when no acc is passed', () => {
     expect(_.reduce([1, 2, 3], (acc, num) => acc + num)).to.equal(6);
   });
-  
+
   it('returns reduced array', () => {
     expect(_.reduce([1, 2, 3], (acc, num) => acc.concat(num * 2), [])).to.eql([2, 4, 6]);
+  });
+
+  it('reduces object', () => {
+    expect(_.reduce({ a: 1, b: 2, c: 3 }, (acc, num) => acc.concat(num * 2), [])).to.eql([2, 4, 6]);
+  });
+  
+  it('returns reduced object', () => {
+    expect(_.reduce({ a: 1, b: 2, c: 3 }, (acc, num) => {
+      acc[num] = num * 2;
+      return acc;
+    }, {})).to.eql({ 1: 2, 2: 4, 3: 6 });
   });
 });
