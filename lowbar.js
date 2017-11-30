@@ -119,6 +119,7 @@ _.reject = (list, predicate, context=this) => {
 
 _.uniq = (list) => {
   const res = [];
+  if(!Array.isArray(list) && typeof list !== 'string') return [];
   _.each(list, (item) => {
     if(_.indexOf(res, item) === -1) res.push(item);
   });

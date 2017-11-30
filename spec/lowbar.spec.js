@@ -324,5 +324,16 @@ describe('#uniq', function () {
     expect(_.uniq('abcb')).to.eql(['a', 'b', 'c']);
   });
 
+  it('returns empty array if list passed is not string or an array', function () {
+    expect(_.uniq(56)).to.eql([]);
+    expect(_.uniq({ 1: 1, 2: 2, 3: 3, 4: 1 })).to.eql([]);
+    expect(_.uniq(undefined)).to.eql([]);
+    expect(_.uniq(null)).to.eql([]);
+    expect(_.uniq()).to.eql([]);
+    expect(_.uniq([])).to.eql([]);
+    expect(_.uniq('')).to.eql([]);
+    expect(_.uniq({})).to.eql([]);
+  });
+
 });
   
