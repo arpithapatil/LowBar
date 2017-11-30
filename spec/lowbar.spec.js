@@ -212,5 +212,18 @@ describe('#filter', function () {
     expect(_.filter([1, 2, 3, 4, 5, 6], function check(num) { return num % 2 === 0; })).to.eql([2, 4, 6]);
     expect(_.filter([2, 4, 5, 6, 10, 11], function check(num) { return num % 2 === 0; })).to.eql([2, 4, 6, 10]);
   });
+  it('returns an array of true elements for the given object', function () {
+    var input = { one: 1, two: 2, three: 3, four: 4 };
+    function isEven(num) {
+      return num % 2 === 0;
+    }
+    var result = _.filter(input, isEven);
+    var expected = [2, 4];
+    expect(result).to.eql(expected);
+  });
+
+  it('returns an array of true elements for the given string', function () {
+    expect(_.filter('abc', function check(item) { return item === 'b'; })).to.eql(['b']);
+  });
 });
   

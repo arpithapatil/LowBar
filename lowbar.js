@@ -90,7 +90,10 @@ _.indexOf = (list, value, isSorted) => {
 };
 
 _.filter = (list, predicate) => {
-  const res = []; 
+  const res = [];
+  if (typeof list === 'string') {
+    list = list.split('');
+  } 
   _.each(list, (item) => {
     if (predicate(item)) res.push(item);
   });
