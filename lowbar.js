@@ -220,6 +220,16 @@ _.shuffle = (list) => {
   return newList;
 };
 
+_.once = (func) => {
+  let toCall = true; 
+  return () => {
+    if (toCall) {
+      toCall = false; 
+      return func();
+    }
+  };
+};
+
 
 
 

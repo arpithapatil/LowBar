@@ -652,3 +652,17 @@ describe('#shuffle', () => {
   });
 });
 
+describe('#once', () => {
+  it('it is a function', () => {
+    expect(_.once).to.be.a('function');
+  });
+  
+  it('returns version of function that can only be called once', () => {
+    const spy = sinon.spy(); 
+    const func = _.once(spy); 
+    func(); 
+    func(); 
+    expect(spy.callCount).to.equal(1);
+  });
+});
+
