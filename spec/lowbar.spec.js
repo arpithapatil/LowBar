@@ -425,5 +425,9 @@ describe('#contains', () => {
   it('returns true if list contains value', () => {
     expect(_.contains([1,2,3,4,5], 5)).to.equal(true);
   });
+
+  it('returns false if list does not contain value', () => {
+    expect(_.contains([1,2,3,4,5], 6)).to.equal(false);
+  });
 });
   
