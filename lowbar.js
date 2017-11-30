@@ -221,10 +221,10 @@ _.shuffle = (list) => {
 };
 
 _.once = (func) => {
-  let toCall = true; 
+  let toCall = true;
   return () => {
     if (toCall) {
-      toCall = false; 
+      toCall = false;
       return func();
     }
   };
@@ -234,7 +234,7 @@ _.once = (func) => {
 _.invoke = (list, method, ...args) => {
   return _.map(list, (item) => {
     return item[method](args);
-  });	
+  });
 };
 
 
