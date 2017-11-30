@@ -716,4 +716,11 @@ describe('#sortBy', () => {
     expect(res).to.eql([5,4,3,2,1]);
   });
 
+  it('returns an empty array for invalid argument', () => {
+    expect(_.sortBy(555)).to.eql([]);
+    expect(_.sortBy(undefined)).to.eql([]);		
+    expect(_.sortBy([])).to.eql([]);			
+    expect(_.sortBy({})).to.eql([]);			
+  });
+
 });
