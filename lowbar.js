@@ -147,7 +147,7 @@ _.contains = (list, value, indexFrom = 0) => {
   return _.indexOf(list.slice(indexFrom), value) !== -1 ? true : false;
 };
 
-_.pluck = (list, propertyName) => _.map(list, (item) => item[propertyName]); 
+_.pluck = (list, propertyName) => _.map(list, (item) => item[propertyName]);
 
 
 

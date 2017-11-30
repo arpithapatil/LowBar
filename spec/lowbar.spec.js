@@ -450,6 +450,17 @@ describe('#pluck', () => {
   });
 
   it('returns the values of an object', () => {
-    expect(_.pluck([{a:1,b:2,c:3}, {a:4, b:5, c:6}], 'c')).to.eql([3,6]);
+    expect(_.pluck([{ a: 1, b: 2, c: 3 }, { a: 4, b: 5, c: 6 }], 'c')).to.eql([3, 6]);
+    expect(_.pluck([[1, 2, 3], [1, 2, 3], [1, 2, 3]], 2)).to.eql([3, 3, 3]);
+    expect(_.pluck([{ a: 1, b: 3 }, { a: 3, c: 4 }, { a: 4, d: 6 }], 'a')).to.eql([1, 3, 4]);
+  });
+
+  it('returns empty array if given invalid arguments', () => {
+    expect(_.pluck([{ a: 1 }, { a: 3 }, { a: 4 }], 'b')).to.eql([undefined, undefined, undefined]);
+    expect(_.pluck('hello', 5)).to.eql([undefined, undefined, undefined, undefined, undefined]);
+    expect(_.pluck(NaN, 0)).to.eql([]);
+    expect(_.pluck(undefined, undefined)).to.eql([]);
+    expect(_.pluck(123, 0)).to.eql([]);
+
   });
 });
