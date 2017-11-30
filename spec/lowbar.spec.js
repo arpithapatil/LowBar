@@ -575,6 +575,7 @@ describe('#extend', () => {
   it('is a function', function () {
     expect(_.extend).to.be.a('function');
   });
+
   it('returns joined object ', () => {
     expect(_.extend({ a: 1, b: 2, c: 3 }, { a: 4, d: 5 })).to.eql({ a: 4, b: 2, c: 3, d: 5 });
     expect(_.extend({ a: 1, b: 2, c: 3 }, { a: 4, d: 5 }, { e: 6 })).to.eql({ a: 4, b: 2, c: 3, d: 5, e: 6 });
@@ -599,5 +600,16 @@ describe('#extend', () => {
     expect(_.extend(5)).to.equal(5);
     expect(_.extend(undefined)).to.equal(undefined);
     expect(_.extend([])).to.eql([]);
+  });
+});
+
+describe('#defaults', () => {
+  it('is a function', function () {
+    expect(_.defaults).to.be.a('function');
+  });
+
+  it('adds only undefined keys to object', () => {
+    expect(_.defaults({a:1, b:2}, {b:3, c:4})).to.eql({a:1, b:2, c:4});
+    
   });
 });
