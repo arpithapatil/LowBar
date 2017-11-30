@@ -108,9 +108,9 @@ _.negate = (predicate) => {
   };
 };
 
-_.reject = (list, predicate) => {
+_.reject = (list, predicate, context=this) => {
   const rev = _.negate(predicate); 
-  return _.filter.call(null, list, rev);
+  return _.filter.call(null, list, rev, context);
 };
 
 

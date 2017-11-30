@@ -226,7 +226,7 @@ describe('#filter', function () {
     expect(_.filter('abc', function check(item) { return item === 'b'; })).to.eql(['b']);
   });
 
-  it('adds context to predicate', () => {
+  it('adds context to predicate when third arguement is passed', () => {
     const arr = [1,2,3,4,5];
     const res = _.filter(arr, function (i) {
       return i % this === 0; 
@@ -269,6 +269,14 @@ describe('#reject', function () {
   it('returns an array of elements that fails the truth test', function () {
     expect(_.reject([1, 2, 3, 4, 5, 6], function check(num) { return num % 2 === 0; })).to.eql([1, 3, 5]);
     expect(_.reject([2, 4, 5, 6, 10, 11], function check(num) { return num % 2 === 0; })).to.eql([5, 11]);
+  });
+
+  it('adds context to predicate when third argument is passed', () => {
+    const arr = [1,2,3,4,5];
+    const res = _.reject(arr, function (i) {
+      return i % this === 0; 
+    }, 2); 
+    expect(res).to.eql([1,3,5]);
   });
 });
   
