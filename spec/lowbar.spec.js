@@ -500,3 +500,13 @@ describe('#reduce', () => {
     }, [], 2)).to.eql([2, 4, 6]);
   });
 });
+
+describe('#every', () => {
+  it('is a function', function () {
+    expect(_.every).to.be.a('function');
+  });
+  it('returns true if every item in a array passes predicate', () => {
+    expect(_.every([2,4,6,8], (i) => i%2===0)).to.equal(true);
+    expect(_.every([1,3,5,7], (i) => i%2!==0)).to.equal(true);
+  });
+});
