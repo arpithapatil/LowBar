@@ -609,7 +609,13 @@ describe('#defaults', () => {
   });
 
   it('adds only undefined keys to object', () => {
-    expect(_.defaults({a:1, b:2}, {b:3, c:4})).to.eql({a:1, b:2, c:4});
-    
+    expect(_.defaults({ a: 1, b: 2 }, { b: 3, c: 4 })).to.eql({ a: 1, b: 2, c: 4 });
+
+  });
+
+  it('edge cases', () => {
+    expect(_.extend(5)).to.equal(5);
+    expect(_.extend(undefined)).to.equal(undefined);
+    expect(_.extend([])).to.eql([]);
   });
 });

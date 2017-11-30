@@ -196,10 +196,10 @@ _.defaults = (start, ...objects) => {
   return _.reduce(objects, (acc, item) => {
     for (let key in item) {
       if (!(key in acc)) {
-        acc[key] = item[key]; 
+        acc[key] = item[key];
       }
     }
-    return acc; 
+    return acc;
   }, start);
 };
 
