@@ -124,6 +124,10 @@ _.uniq = (list, isSorted) => {
     _.each(list, (item) => {
       if(_.indexOf(res, item) === -1) res.push(item);
     });
+  if(isSorted)
+    _.each(list, (item) => {
+      if(_.indexOf(res, item) === -1) res.push(item);
+    });
   return res;
 };
 

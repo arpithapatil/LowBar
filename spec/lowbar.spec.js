@@ -342,5 +342,20 @@ describe('#uniq', function () {
     expect(actual).to.eql(expected);
   });
 
+  it('Checks if function works on sorted numeric array with duplicates', function () {
+    var input = [-1, -1, 2, 2, 2, 4, 5, 5, 5, 9];
+    var actual = _.uniq(input, true);
+    var expected = [-1, 2, 4, 5, 9];
+    expect(actual).to.eql(expected);
+  });
+
+  it('Checks if function works on sorted numeric array with duplicates if we also pass a iteratee function (which in this case is non-monotonic)', function () {
+    var input = [-1, -1, 2, 2, 2, 4, 5, 5, 5, 9];
+    var actual = _.uniq(input, true, function (num) { return -num; });
+    var expected = [-1, 2, 4, 5, 9];
+    expect(actual).to.eql(expected);
+
+  });
+
 });
   
