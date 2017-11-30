@@ -624,7 +624,7 @@ describe('#shuffle', () => {
   it('it is a function', () => {
     expect(_.shuffle).to.be.a('function');
   });
-  
+
   it('it returns the shuffled copy of the list ', () => {
     const array = [1, 2, 3, 4, 5];
     const str = 'apple';
@@ -636,6 +636,11 @@ describe('#shuffle', () => {
 
   it('it returns an array with same length ', () => {
     expect(_.shuffle([1, 2, 3, 4]).length).to.eql(4);
+  });
+
+  it('it does not mutate the given array to it ', () => {
+    var arr = [1, 2, 3, 4];
+    expect(_.shuffle(arr)).to.not.equal(arr);
   });
 });
 
