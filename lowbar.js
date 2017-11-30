@@ -17,7 +17,6 @@ _.values = function (list) {
 _.first = function (list, n) {
   if ((typeof list === 'number' || typeof list === 'boolean') && typeof n === 'number') return [];
   if (typeof list !== 'string' && typeof list !== 'object') return;
-  
   if (!n) return list[0];
   else {
     if (typeof list === 'string')
@@ -31,7 +30,6 @@ _.first = function (list, n) {
 _.last = function (list, n) {
   if ((typeof list === 'number' || typeof list === 'boolean') && typeof n === 'number') return [];
   if (typeof list !== 'string' && typeof list !== 'object') return;
-  
   if (!n) return list[list.length - 1];
   else {
     if (typeof list === 'string')
@@ -43,19 +41,19 @@ _.last = function (list, n) {
   }
 };
 
-_.each = (list, iteratee, context=this) => {
+_.each = (list, iteratee, context = this) => {
   if (typeof list === 'string') {
     for (var i = 0; i < list.length; i++)
       iteratee.call(context, list[i], i, list);
   }
-  if (Array.isArray(list)){
-    for (let i = 0; i<list.length; i++) {
+  if (Array.isArray(list)) {
+    for (let i = 0; i < list.length; i++) {
       iteratee.call(context, list[i], i, list);
     }
   }
   if (typeof list === 'object' && !Array.isArray(list)) {
     for (let key in list) {
-      iteratee.call(context, list[key], key, list); 
+      iteratee.call(context, list[key], key, list);
     }
   }
   return list;
@@ -63,10 +61,10 @@ _.each = (list, iteratee, context=this) => {
 };
 
 _.indexOf = (list, value, isSorted) => {
-  if(typeof list === 'string') list = list.split('');
+  if (typeof list === 'string') list = list.split('');
   if (!Array.isArray(list) && typeof list !== 'string') return -1;
   let res = -1;
-  const binSearch = (list, value) => {  
+  const binSearch = (list, value) => {
     let low = 0;
     let high = list.length - 1;
     while (low <= high) {
@@ -75,13 +73,13 @@ _.indexOf = (list, value, isSorted) => {
       if (value < list[mid]) high = mid - 1;
       else low = mid + 1;
     }
-    return -1; 
+    return -1;
   };
-  if (isSorted) res = binSearch(list, value); 
+  if (isSorted) res = binSearch(list, value);
   else {
-    for (let i = 0; i<list.length; i++) {
+    for (let i = 0; i < list.length; i++) {
       if (value === list[i]) {
-        res = i; 
+        res = i;
         break;
       }
     }
@@ -89,12 +87,12 @@ _.indexOf = (list, value, isSorted) => {
   return res;
 };
 
-_.filter = (list, predicate, context=this) => {
-  const res = []; 
+_.filter = (list, predicate, context = this) => {
+  const res = [];
   if (list === undefined || list === null) return [];
   if (typeof list === 'string') {
     list = list.split('');
-  } 
+  }
   if (!predicate) return list;
   _.each(list, function (item) {
     if (predicate.call(context, item)) res.push(item);
@@ -108,46 +106,48 @@ _.negate = (predicate) => {
   };
 };
 
-_.reject = (list, predicate, context=this) => {
+_.reject = (list, predicate, context = this) => {
   if (typeof list === 'string') {
     list = list.split('');
-  } 
+  }
   const rev = _.negate(predicate);
-  if (!predicate) return []; 
+  if (!predicate) return [];
   return _.filter.call(null, list, rev, context);
 };
 
 _.uniq = (list, isSorted) => {
   const res = [];
-  if(!Array.isArray(list) && typeof list !== 'string') return [];
-  if(!isSorted)
+  if (!Array.isArray(list) && typeof list !== 'string') return [];
+  if (!isSorted)
     _.each(list, (item) => {
-      if(_.indexOf(res, item) === -1) res.push(item);
+      if (_.indexOf(res, item) === -1) res.push(item);
     });
-  if(isSorted)
+  if (isSorted)
     _.each(list, (item) => {
-      if(_.indexOf(res, item) === -1) res.push(item);
+      if (_.indexOf(res, item) === -1) res.push(item);
     });
   return res;
 };
 
-_.map = (list, iteratee=_.identity, context=this) => {
-  const res = []; 
+_.map = (list, iteratee = _.identity, context = this) => {
+  const res = [];
   _.each(list, (item, i, list) => {
     res.push(iteratee.call(context, item, i, list));
   });
   return res;
 };
 
-_.contains = (list, value, indexFrom=0) => {
+_.contains = (list, value, indexFrom = 0) => {
   if (!Array.isArray(list) && typeof list === 'object') {
     for (let key in list) {
       if (list[key] === value) return true;
     }
     return false;
   }
-  return _.indexOf(list.slice(indexFrom), value) !== -1 ? true : false; 
+  return _.indexOf(list.slice(indexFrom), value) !== -1 ? true : false;
 };
+
+_.pluck = (list, propertyName) => _.map(list, (item) => item[propertyName]); 
 
 
 

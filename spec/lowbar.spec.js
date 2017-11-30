@@ -9,11 +9,11 @@ describe('#identity', () => {
   it('it is a function', () => {
     expect(_.identity).to.be.a('function');
   });
-  
+
   it('returns undefined when an arguement is not given', () => {
     expect(_.identity()).to.equal(undefined);
   });
-  
+
   it('returns the same value that is used as the argument.', () => {
     expect(_.identity('abc')).to.equal('abc');
     const array = [1, 2, 3];
@@ -31,24 +31,24 @@ describe('#values', () => {
   it('it is a function', () => {
     expect(_.values).to.be.a('function');
   });
-  
+
   it('returns an empty array when input is not an object', () => {
     expect(_.values()).to.eql([]);
     expect(_.values('abc')).to.eql([]);
     expect(_.values(345)).to.eql([]);
     expect(_.values(undefined)).to.eql([]);
   });
-  
+
   it('return all of the values of the list in an array', () => {
     expect(_.values([1, 2, 3])).to.eql([1, 2, 3]);
     expect(_.values({ 1: 1, 2: 2, 3: 3 })).to.eql([1, 2, 3]);
   });
-  
+
   it('Output is an array', () => {
     expect(_.values([1, 2, 3])).to.eql([1, 2, 3]);
     expect(_.values({ 1: 1, 2: 2, 3: 3 })).to.eql([1, 2, 3]);
   });
-  
+
   it('Input is an object', () => {
     expect(_.values([1, 2, 3])).to.eql([1, 2, 3]);
     expect(_.values({ 1: 1, 2: 2, 3: 3 })).to.eql([1, 2, 3]);
@@ -60,7 +60,7 @@ describe('#first', () => {
     expect(_.first).to.be.a('function');
   });
   it('returns the first element of an array', () => {
-    expect(_.first([1,2,3,4])).to.equal(1);
+    expect(_.first([1, 2, 3, 4])).to.equal(1);
   });
   it('returns undefined when arguements are not given', () => {
     expect(_.first()).to.equal(undefined);
@@ -92,7 +92,7 @@ describe('#last', () => {
     expect(_.last).to.be.a('function');
   });
   it('returns the last element of an array', () => {
-    expect(_.last([1,2,3,4,5])).to.equal(5);
+    expect(_.last([1, 2, 3, 4, 5])).to.equal(5);
   });
   it('returns undefined when arguements are not given', () => {
     expect(_.last()).to.equal(undefined);
@@ -154,10 +154,10 @@ describe('#each', () => {
   });
   it('uses different context to this if third argument is passed', () => {
     const arr = [];
-    function func (i) {
+    function func(i) {
       this.push(i);
     }
-    _.each(['a', 'b', 'c'], func, arr); 
+    _.each(['a', 'b', 'c'], func, arr);
     expect(arr.length).to.equal(3);
   });
   it('returns list if passed list is number or null', function () {
@@ -176,18 +176,18 @@ describe('#indexOf', () => {
     expect(_.indexOf).to.be.a('function');
   });
   it('returns the index of the first instance of the sencond argument', () => {
-    expect(_.indexOf([1,2,3,4,5], 3)).to.equal(2);
+    expect(_.indexOf([1, 2, 3, 4, 5], 3)).to.equal(2);
   });
   it('returns the index of the given target in string', function () {
-    var result = _.indexOf('hello','o');
+    var result = _.indexOf('hello', 'o');
     var expected = 4;
     expect(result).to.equal(expected);
   });
   it('returns index of first instance of second argument using binary search', () => {
-    expect(_.indexOf([1,2,3,4,5], 3, true)).to.equal(2);
-    expect(_.indexOf([2,3,1,5,4], 3, true)).to.equal(-1);
+    expect(_.indexOf([1, 2, 3, 4, 5], 3, true)).to.equal(2);
+    expect(_.indexOf([2, 3, 1, 5, 4], 3, true)).to.equal(-1);
   });
-  
+
   it('returns -1 if inputs are not passed correctly', function () {
     expect(_.indexOf([1, 2, 3])).to.equal(-1);
     expect(_.indexOf(3)).to.equal(-1);
@@ -207,7 +207,7 @@ describe('#filter', function () {
   it('is a function', function () {
     expect(_.filter).to.be.a('function');
   });
-  
+
   it('returns an array of true elements for the given array', function () {
     expect(_.filter([1, 2, 3, 4, 5, 6], function check(num) { return num % 2 === 0; })).to.eql([2, 4, 6]);
     expect(_.filter([2, 4, 5, 6, 10, 11], function check(num) { return num % 2 === 0; })).to.eql([2, 4, 6, 10]);
@@ -227,11 +227,11 @@ describe('#filter', function () {
   });
 
   it('adds context to predicate when third arguement is passed', () => {
-    const arr = [1,2,3,4,5];
+    const arr = [1, 2, 3, 4, 5];
     const res = _.filter(arr, function (i) {
-      return i % this === 0; 
-    }, 2); 
-    expect(res).to.eql([2,4]);
+      return i % this === 0;
+    }, 2);
+    expect(res).to.eql([2, 4]);
   });
 
   it('returns an empty array if inputs are not passed correctly', function () {
@@ -255,7 +255,7 @@ describe('#negate', () => {
     expect(_.negate).to.be.a('function');
   });
   it('negates a predicate function', () => {
-    const isTrue = () => 2%2===0; 
+    const isTrue = () => 2 % 2 === 0;
     const isFalse = _.negate(isTrue);
     expect(isFalse()).to.equal(false);
   });
@@ -265,18 +265,18 @@ describe('#reject', function () {
   it('is a function', function () {
     expect(_.reject).to.be.a('function');
   });
-  
+
   it('returns an array of elements that fails the truth test when the given list is an array', function () {
     expect(_.reject([1, 2, 3, 4, 5, 6], function check(num) { return num % 2 === 0; })).to.eql([1, 3, 5]);
     expect(_.reject([2, 4, 5, 6, 10, 11], function check(num) { return num % 2 === 0; })).to.eql([5, 11]);
   });
 
   it('adds context to predicate when third argument is passed', () => {
-    const arr = [1,2,3,4,5];
+    const arr = [1, 2, 3, 4, 5];
     const res = _.reject(arr, function (i) {
-      return i % this === 0; 
-    }, 2); 
-    expect(res).to.eql([1,3,5]);
+      return i % this === 0;
+    }, 2);
+    expect(res).to.eql([1, 3, 5]);
   });
 
   it('returns an array of elements that fails the truth test when the given list is an object', function () {
@@ -291,7 +291,7 @@ describe('#reject', function () {
 
   it('returns an array of elements that fails the truth test when the given list is a string', function () {
     expect(_.reject('abc', function check(item) { return item === 'b'; })).to.eql(['a', 'c']);
-  
+
   });
 
   it('returns an empty array if inputs are not passed correctly', function () {
@@ -313,12 +313,12 @@ describe('#uniq', function () {
   it('is a function', function () {
     expect(_.uniq).to.be.a('function');
   });
-  
+
   it('returns duplicate free version of the array', function () {
     expect(_.uniq([1, 2, 3, 4, 2, 1])).to.eql([1, 2, 3, 4]);
     expect(_.uniq([5, 8, 33, 15, 33, 5])).to.eql([5, 8, 33, 15]);
   });
-  
+
   it('returns duplicate free version of the string', function () {
     expect(_.uniq('apple')).to.eql(['a', 'p', 'l', 'e']);
     expect(_.uniq('abcb')).to.eql(['a', 'b', 'c']);
@@ -365,9 +365,9 @@ describe('#map', () => {
   });
 
   it('returns list entered as first argument when no iteratee is passed', () => {
-    expect(_.map([1,2,3,4,5])).to.eql([1,2,3,4,5]);
+    expect(_.map([1, 2, 3, 4, 5])).to.eql([1, 2, 3, 4, 5]);
   });
-  
+
   it('returns a new array of values by matching item in array', function () {
     var input = [1, 3, 6, 8, 9];
     function multiply(n) {
@@ -410,10 +410,10 @@ describe('#map', () => {
   });
 
   it('adds context to iteratee', () => {
-    const res = _.map([1,2,3,4,5], function (i) {
-      return i * this; 
+    const res = _.map([1, 2, 3, 4, 5], function (i) {
+      return i * this;
     }, 2);
-    expect(res).to.eql([2,4,6,8,10]);
+    expect(res).to.eql([2, 4, 6, 8, 10]);
   });
 });
 
@@ -423,24 +423,33 @@ describe('#contains', () => {
   });
 
   it('returns true if list contains value', () => {
-    expect(_.contains([1,2,3,4,5], 5)).to.equal(true);
+    expect(_.contains([1, 2, 3, 4, 5], 5)).to.equal(true);
   });
 
   it('returns false if list does not contain value', () => {
-    expect(_.contains([1,2,3,4,5], 6)).to.equal(false);
+    expect(_.contains([1, 2, 3, 4, 5], 6)).to.equal(false);
   });
 
   it('returns true if value in object', () => {
-    expect(_.contains({a:1,b:2,c:3}, 3)).to.equal(true);
+    expect(_.contains({ a: 1, b: 2, c: 3 }, 3)).to.equal(true);
   });
-  
+
   it('returns false if value not in object', () => {
-    expect(_.contains({a:1,b:2,c:3}, 4)).to.equal(false);
+    expect(_.contains({ a: 1, b: 2, c: 3 }, 4)).to.equal(false);
   });
 
   it('returns true or false when indexFrom argument is included', () => {
-    expect(_.contains([1,2,3,4,5], 5, 3)).to.equal(true);
-    expect(_.contains([1,2,3,4,5], 1, 1)).to.equal(false);
+    expect(_.contains([1, 2, 3, 4, 5], 5, 3)).to.equal(true);
+    expect(_.contains([1, 2, 3, 4, 5], 1, 1)).to.equal(false);
   });
 });
-  
+
+describe('#pluck', () => {
+  it('is a function', function () {
+    expect(_.pluck).to.be.a('function');
+  });
+
+  it('returns the values of an object', () => {
+    expect(_.pluck([{a:1,b:2,c:3}, {a:4, b:5, c:6}], 'c')).to.eql([3,6]);
+  });
+});
