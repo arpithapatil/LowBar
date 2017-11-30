@@ -231,9 +231,9 @@ _.once = (func) => {
 };
 
 
-_.invoke = (list, method) => {
+_.invoke = (list, method, ...args) => {
   return _.map(list, (item) => {
-    return item[method]();
+    return item[method](args);
   });	
 };
 

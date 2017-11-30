@@ -673,7 +673,14 @@ describe('#invoke', () => {
 
   it('returns array with method passed on each item', () => {
     expect(_.invoke([[1,2,3], [4,5,6]], 'reverse')).to.eql([[3,2,1], [6,5,4]]);
-    expect(_.invoke([1,2,3], 'toString')).to.eql(['1', '2', '3']);
+    expect(_.invoke([[5, 1, 7], [3, 2, 1]], 'sort')).to.eql([[1, 5, 7], [1, 2, 3]]);
+    
+  });
+
+  it('applies passed arguments to method', () => {
+    expect(_.invoke([1,2,3], 'toString', 10)).to.eql(['1', '2', '3']);
+    expect(_.invoke([[1,2,3], [4,5,6]], 'concat', 0)).to.eql([[1,2,3,0], [4,5,6,0]]);
+    
   });
 });
 
