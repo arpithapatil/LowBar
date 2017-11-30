@@ -233,5 +233,20 @@ describe('#filter', function () {
     }, 2); 
     expect(res).to.eql([2,4]);
   });
+  
+  it('returns an empty array if inputs are not passed correctly', function () {
+    const predicate = function (num) { return num % 2 === 0; };
+    expect(_.filter(123, function check(item) { return item === 123; })).to.eql([]);
+    expect(_.filter()).to.eql([]);
+    expect(_.filter(undefined, predicate)).to.eql([]);
+    expect(_.filter(null)).to.eql([]);
+    expect(_.filter([], predicate)).to.eql([]);
+    expect(_.filter('', predicate)).to.eql([]);
+    expect(_.filter({}, predicate)).to.eql([]);
+  });
+
+  it('returns list if predicate not given', function () {
+    expect(_.filter([1, 2, 3])).to.eql([1, 2, 3]);
+  });
 });
   

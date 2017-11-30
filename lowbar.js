@@ -91,9 +91,11 @@ _.indexOf = (list, value, isSorted) => {
 
 _.filter = (list, predicate, context=this) => {
   const res = []; 
+  if (list === undefined || list === null) return [];
   if (typeof list === 'string') {
     list = list.split('');
   } 
+  if (!predicate) return list;
   _.each(list, function (item) {
     if (predicate.call(context, item)) res.push(item);
   });
