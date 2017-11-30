@@ -161,13 +161,14 @@ _.reduce = (list, iteratee, acc, context = this) => {
   return acc;
 };
 
-_.every = (list, predicate) => {
-  let res = true; 
-  _.each(list, (item) => {
-    if (!predicate(item)) res = false; 
+_.every = (list, predicate, context = this) => {
+  let res = true;
+  _.each(list, function (item) {
+    if (!predicate.call(context, item)) res = false;
   });
-  return res; 
-}; 
+  return res;
+};
+
 
 
 

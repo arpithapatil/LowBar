@@ -507,18 +507,27 @@ describe('#every', () => {
   });
 
   it('returns true if every item in a array passes predicate', () => {
-    expect(_.every([2,4,6,8], (i) => i%2===0)).to.equal(true);
-    expect(_.every([1,3,5,7], (i) => i%2!==0)).to.equal(true);
+    expect(_.every([2, 4, 6, 8], (i) => i % 2 === 0)).to.equal(true);
+    expect(_.every([1, 3, 5, 7], (i) => i % 2 !== 0)).to.equal(true);
   });
 
   it('returns false if any item in a array fails predicate', () => {
-    expect(_.every([2,3,6,8], (i) => i%2===0)).to.equal(false);
-    expect(_.every([1,2,5,7], (i) => i%2!==0)).to.equal(false);
+    expect(_.every([2, 3, 6, 8], (i) => i % 2 === 0)).to.equal(false);
+    expect(_.every([1, 2, 5, 7], (i) => i % 2 !== 0)).to.equal(false);
   });
 
   it('works when objects are passed as an argument', () => {
-    expect(_.every({a:1, b:2, c:3}, (i) => i%2!==0)).to.equal(false);
-    expect(_.every({a:2,b:4,c:6,d:8}, (i) => i%2===0)).to.equal(true);
-    
+    expect(_.every({ a: 1, b: 2, c: 3 }, (i) => i % 2 !== 0)).to.equal(false);
+    expect(_.every({ a: 2, b: 4, c: 6, d: 8 }, (i) => i % 2 === 0)).to.equal(true);
+
+  });
+
+  it('applies context to predicate function', () => {
+    expect(_.every([2, 4, 6, 8], function (i) {
+      return i % this === 0;
+    }, 2)).to.equal(true);
+    expect(_.every({ a: 2, b: 4, c: 6, d: 8 }, function (i) {
+      return i % this === 0;
+    }, 2)).to.equal(true);
   });
 });
