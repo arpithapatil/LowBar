@@ -464,3 +464,17 @@ describe('#pluck', () => {
 
   });
 });
+
+describe('#reduce', () => {
+  it('is a function', function () {
+    expect(_.reduce).to.be.a('function');
+  });
+
+  it('reduces array to one number', () => {
+    expect(_.reduce([1,2,3], (acc, num) => acc + num, 0)).to.equal(6);
+  });
+
+  it('reduces array to one number when no acc is passed', () => {
+    expect(_.reduce([1,2,3], (acc, num) => acc + num)).to.equal(6);
+  });
+});
