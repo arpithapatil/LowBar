@@ -172,15 +172,15 @@ _.every = (list, predicate, context = this) => {
   return res;
 };
 
-_.some = (list, predicate) => {
-  let res = false;
+_.some = (list, predicate, context=this) => {
+  let res = false; 
   _.each(list, function (item) {
-    if (predicate(item)) {
-      res = true;
+    if (predicate.call(context, item)) {
+      res = true; 
       return res;
     }
   });
-  return res;
+  return res; 
 };
 
 

@@ -557,4 +557,10 @@ describe('#some', () => {
     expect(_.some({a:1, b:2, c:3}, (i) => i%2!==0)).to.equal(true);
     expect(_.some({a:2,b:4,c:7,d:8}, (i) => i%2===0)).to.equal(true);
   });
+
+  it('applies context to _.some', () => {
+    expect(_.some({a:2,b:7,c:9,d:11}, function (i) {
+      return i%this===0;
+    }, 2)).to.equal(true);	
+  });
 });
