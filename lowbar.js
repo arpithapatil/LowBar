@@ -140,6 +140,12 @@ _.map = (list, iteratee=_.identity, context=this) => {
 };
 
 _.contains = (list, value) => {
+  if (!Array.isArray(list) && typeof list === 'object') {
+    for (let key in list) {
+      if (list[key] === value) return true;
+    }
+    return false;
+  }
   return _.indexOf(list, value) !== -1 ? true : false; 
 };
 
