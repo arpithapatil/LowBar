@@ -139,6 +139,10 @@ _.map = (list, iteratee=_.identity, context=this) => {
   return res;
 };
 
+_.contains = (list, value) => {
+  return _.indexOf(list, value) !== -1 ? true : false; 
+};
+
 
 
 

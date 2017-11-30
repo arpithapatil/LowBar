@@ -363,6 +363,7 @@ describe('#map', () => {
   it('is a function', function () {
     expect(_.map).to.be.a('function');
   });
+
   it('returns list entered as first argument when no iteratee is passed', () => {
     expect(_.map([1,2,3,4,5])).to.eql([1,2,3,4,5]);
   });
@@ -413,6 +414,16 @@ describe('#map', () => {
       return i * this; 
     }, 2);
     expect(res).to.eql([2,4,6,8,10]);
+  });
+});
+
+describe('#contains', () => {
+  it('is a function', function () {
+    expect(_.contains).to.be.a('function');
+  });
+
+  it('returns true if list contains value', () => {
+    expect(_.contains([1,2,3,4,5], 5)).to.equal(true);
   });
 });
   
