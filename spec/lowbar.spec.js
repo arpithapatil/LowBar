@@ -225,5 +225,13 @@ describe('#filter', function () {
   it('returns an array of true elements for the given string', function () {
     expect(_.filter('abc', function check(item) { return item === 'b'; })).to.eql(['b']);
   });
+
+  it('adds context to predicate', () => {
+    const arr = [1,2,3,4,5];
+    const res = _.filter(arr, function (i) {
+      return i % this === 0; 
+    }, 2); 
+    expect(res).to.eql([2,4]);
+  });
 });
   
