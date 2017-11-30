@@ -724,3 +724,13 @@ describe('#sortBy', () => {
   });
 
 });
+
+describe('#zip', () => {
+  it('it is a function', () => {
+    expect(_.zip).to.be.a('function');
+  });
+
+  it('returns zipped array', () => {
+    expect(_.zip([1,2,3], [4,5,6], [7,8,9])).to.eql([[1,4,7], [2,5,8], [3,6,9]]);
+  });
+});
