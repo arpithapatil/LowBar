@@ -505,8 +505,14 @@ describe('#every', () => {
   it('is a function', function () {
     expect(_.every).to.be.a('function');
   });
+  
   it('returns true if every item in a array passes predicate', () => {
     expect(_.every([2,4,6,8], (i) => i%2===0)).to.equal(true);
     expect(_.every([1,3,5,7], (i) => i%2!==0)).to.equal(true);
+  });
+
+  it('returns false if any item in a array fails predicate', () => {
+    expect(_.every([2,3,6,8], (i) => i%2===0)).to.equal(false);
+    expect(_.every([1,2,5,7], (i) => i%2!==0)).to.equal(false);
   });
 });
