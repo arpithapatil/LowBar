@@ -238,12 +238,16 @@ _.invoke = (list, method, ...args) => {
   });
 };
 
-_.sortBy = (list, iteratee) => {
-  const res = _.map(list); 
-  return res.sort((a,b) => {
-    return iteratee(a)-iteratee(b);
+
+_.sortBy = (list, iteratee = _.identity, context = this) => {
+  if (typeof list !== 'object') return [];
+  const res = _.map(list);
+  iteratee = iteratee.bind(context);
+  return res.sort(function (a, b) {
+    return iteratee(a) - iteratee(b);
   });
 };
+  
 
 
 

@@ -709,4 +709,11 @@ describe('#sortBy', () => {
     })).to.eql([3,4,2,5,1]);
   });
 
+  it('applies context to the iteratee', () => {
+    const res = _.sortBy([1,2,3,4,5], function (item) {
+      return 1/Math.pow(item, this);
+    }, 2);
+    expect(res).to.eql([5,4,3,2,1]);
+  });
+
 });
