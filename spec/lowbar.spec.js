@@ -367,5 +367,28 @@ describe('#map', () => {
     expect(_.map([1,2,3,4,5])).to.eql([1,2,3,4,5]);
   });
   
+  it('returns a new array of values by matching item in array', function () {
+    var input = [1, 3, 6, 8, 9];
+    function multiply(n) {
+      return n * 3;
+    }
+    expect(_.map(input, multiply)).to.eql([3, 9, 18, 24, 27]);
+  });
+
+  it('returns a new array of values by matching item in object', function () {
+    var input = { one: 1, three: 3, six: 6 };
+    function multiply(n) {
+      return n * 2;
+    }
+    expect(_.map(input, multiply)).to.eql([2, 6, 12]);
+  });
+
+  it('returns a new array of values by matching item in string', function () {
+    var input = 'apple';
+    function changeCase(item) {
+      return item.toUpperCase();
+    }
+    expect(_.map(input, changeCase)).to.eql(['A', 'P', 'P', 'L', 'E']);
+  });
 });
   
