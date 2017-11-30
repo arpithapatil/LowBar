@@ -642,5 +642,13 @@ describe('#shuffle', () => {
     var arr = [1, 2, 3, 4];
     expect(_.shuffle(arr)).to.not.equal(arr);
   });
+
+  it('it returns an empty array when input is not valid', () => {
+    expect(_.shuffle()).to.eql([]);
+    expect(_.shuffle(567)).to.eql([]);
+    expect(_.shuffle(undefined)).to.eql([]);
+    expect(_.shuffle([])).to.eql([]);
+    expect(_.shuffle({})).to.eql([]);
+  });
 });
 
