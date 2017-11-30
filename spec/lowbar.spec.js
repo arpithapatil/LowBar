@@ -233,7 +233,7 @@ describe('#filter', function () {
     }, 2); 
     expect(res).to.eql([2,4]);
   });
-  
+
   it('returns an empty array if inputs are not passed correctly', function () {
     const predicate = function (num) { return num % 2 === 0; };
     expect(_.filter(123, function check(item) { return item === 123; })).to.eql([]);
@@ -247,6 +247,17 @@ describe('#filter', function () {
 
   it('returns list if predicate not given', function () {
     expect(_.filter([1, 2, 3])).to.eql([1, 2, 3]);
+  });
+});
+
+describe('#negate', () => {
+  it('is a function', function () {
+    expect(_.negate).to.be.a('function');
+  });
+  it('negates a predicate function', () => {
+    const isTrue = () => 2%2===0; 
+    const isFalse = _.negate(isTrue);
+    expect(isFalse()).to.equal(false);
   });
 });
   

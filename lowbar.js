@@ -69,7 +69,7 @@ _.indexOf = (list, value, isSorted) => {
   const binSearch = (list, value) => {  
     let low = 0;
     let high = list.length - 1;
-    while (low < high) {
+    while (low <= high) {
       let mid = Math.floor((high + low) / 2);
       if (list[mid] === value) return mid;
       if (value < list[mid]) high = mid - 1;
@@ -100,6 +100,12 @@ _.filter = (list, predicate, context=this) => {
     if (predicate.call(context, item)) res.push(item);
   });
   return res;
+};
+
+_.negate = (predicate) => {
+  return () => {
+    return !predicate.apply(this, arguments);
+  };
 };
 
 
