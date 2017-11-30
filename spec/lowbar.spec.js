@@ -702,4 +702,11 @@ describe('#sortBy', () => {
       return Math.cos(item);
     })).to.eql([3,4,2,5,1]);
   });
+
+  it('returns array of sorted values when given an object', () => {
+    expect(_.sortBy({a:1,b:2,c:3,d:4,e:5}, (item) => {
+      return Math.cos(item);
+    })).to.eql([3,4,2,5,1]);
+  });
+
 });
