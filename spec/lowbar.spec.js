@@ -666,3 +666,14 @@ describe('#once', () => {
   });
 });
 
+describe('#invoke', () => {
+  it('it is a function', () => {
+    expect(_.invoke).to.be.a('function');
+  });
+
+  it('returns array with method passed on each item', () => {
+    expect(_.invoke([[1,2,3], [4,5,6]], 'reverse')).to.eql([[3,2,1], [6,5,4]]);
+    expect(_.invoke([1,2,3], 'toString')).to.eql(['1', '2', '3']);
+  });
+});
+

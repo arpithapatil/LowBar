@@ -231,6 +231,13 @@ _.once = (func) => {
 };
 
 
+_.invoke = (list, method) => {
+  return _.map(list, (item) => {
+    return item[method]();
+  });	
+};
+
+
 
 
 
