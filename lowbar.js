@@ -149,18 +149,17 @@ _.contains = (list, value, indexFrom = 0) => {
 
 _.pluck = (list, propertyName) => _.map(list, (item) => item[propertyName]);
 
-_.reduce = (list, iteratee, acc) => {
+_.reduce = (list, iteratee, acc, context = this) => {
+  iteratee = iteratee.bind(context);
   if (!acc) {
     acc = list[0];
     list = list.slice(1);
   }
-  _.each(list, (item
-  ) => {
-    acc = iteratee(acc, item);
+  _.each(list, function (item, index, list) {
+    acc = iteratee(acc, item, index, list);
   });
   return acc;
 };
-
 
 
 

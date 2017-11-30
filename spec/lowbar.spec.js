@@ -485,11 +485,18 @@ describe('#reduce', () => {
   it('reduces object', () => {
     expect(_.reduce({ a: 1, b: 2, c: 3 }, (acc, num) => acc.concat(num * 2), [])).to.eql([2, 4, 6]);
   });
-  
+
   it('returns reduced object', () => {
     expect(_.reduce({ a: 1, b: 2, c: 3 }, (acc, num) => {
       acc[num] = num * 2;
       return acc;
     }, {})).to.eql({ 1: 2, 2: 4, 3: 6 });
+  });
+
+  it('context can be change of iteratee', () => {
+    expect(_.reduce({ a: 1, b: 2, c: 3 }, function (acc, num) {
+      acc.push(num * this);
+      return acc;
+    }, [], 2)).to.eql([2, 4, 6]);
   });
 });
