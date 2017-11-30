@@ -266,7 +266,7 @@ describe('#reject', function () {
     expect(_.reject).to.be.a('function');
   });
   
-  it('returns an array of elements that fails the truth test', function () {
+  it('returns an array of elements that fails the truth test when the given list is an array', function () {
     expect(_.reject([1, 2, 3, 4, 5, 6], function check(num) { return num % 2 === 0; })).to.eql([1, 3, 5]);
     expect(_.reject([2, 4, 5, 6, 10, 11], function check(num) { return num % 2 === 0; })).to.eql([5, 11]);
   });
@@ -277,6 +277,35 @@ describe('#reject', function () {
       return i % this === 0; 
     }, 2); 
     expect(res).to.eql([1,3,5]);
+  });
+
+  it('returns an array of elements that fails the truth test when the given list is an object', function () {
+    var input = { one: 1, two: 2, three: 3, four: 4 };
+    function isEven(num) {
+      return num % 2 === 0;
+    }
+    var result = _.reject(input, isEven);
+    var expected = [1, 3];
+    expect(result).to.eql(expected);
+  });
+
+  it('returns an array of elements that fails the truth test when the given list is a string', function () {
+    expect(_.reject('abc', function check(item) { return item === 'b'; })).to.eql(['a', 'c']);
+  
+  });
+
+  it('returns an empty array if inputs are not passed correctly', function () {
+    const fn = function (num) {
+      return num > 2;
+    };
+    expect(_.reject(123, function check(item) { return item === 123; })).to.eql([]);
+    expect(_.reject()).to.eql([]);
+    expect(_.reject([1, 2, 3])).to.eql([]);
+    expect(_.reject(undefined, fn)).to.eql([]);
+    expect(_.reject(null, fn)).to.eql([]);
+    expect(_.reject([], fn)).to.eql([]);
+    expect(_.reject('', fn)).to.eql([]);
+    expect(_.reject({}, fn)).to.eql([]);
   });
 });
   

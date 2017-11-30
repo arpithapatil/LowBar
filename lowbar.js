@@ -109,7 +109,11 @@ _.negate = (predicate) => {
 };
 
 _.reject = (list, predicate, context=this) => {
-  const rev = _.negate(predicate); 
+  if (typeof list === 'string') {
+    list = list.split('');
+  } 
+  const rev = _.negate(predicate);
+  if (!predicate) return []; 
   return _.filter.call(null, list, rev, context);
 };
 
