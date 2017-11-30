@@ -335,5 +335,12 @@ describe('#uniq', function () {
     expect(_.uniq({})).to.eql([]);
   });
 
+  it('Checks if function works on unsorted numeric array with duplicates', function () {
+    var input = [6, 7, 8, 3, 8, 2, 1, 2, 8, 8];
+    var actual = _.uniq(input, false);
+    var expected = [6, 7, 8, 3, 2, 1];
+    expect(actual).to.eql(expected);
+  });
+
 });
   

@@ -117,12 +117,13 @@ _.reject = (list, predicate, context=this) => {
   return _.filter.call(null, list, rev, context);
 };
 
-_.uniq = (list) => {
+_.uniq = (list, isSorted) => {
   const res = [];
   if(!Array.isArray(list) && typeof list !== 'string') return [];
-  _.each(list, (item) => {
-    if(_.indexOf(res, item) === -1) res.push(item);
-  });
+  if(!isSorted)
+    _.each(list, (item) => {
+      if(_.indexOf(res, item) === -1) res.push(item);
+    });
   return res;
 };
 
