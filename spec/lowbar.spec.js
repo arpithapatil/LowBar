@@ -407,5 +407,12 @@ describe('#map', () => {
   it('returns NaN for nested arrays', function () {
     expect(_.map([1, 2, 3, 4, [5, 6, 7], 8, 9], function (n) { return n * n; })).to.eql([1, 4, 9, 16, NaN, 64, 81]);
   });
+
+  it('adds context to iteratee', () => {
+    const res = _.map([1,2,3,4,5], function (i) {
+      return i * this; 
+    }, 2);
+    expect(res).to.eql([2,4,6,8,10]);
+  });
 });
   

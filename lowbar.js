@@ -131,15 +131,13 @@ _.uniq = (list, isSorted) => {
   return res;
 };
 
-
-_.map = (list, iteratee=_.identity) => {
+_.map = (list, iteratee=_.identity, context=this) => {
   const res = []; 
-  _.each(list, (item) => {
-    res.push(iteratee(item));
+  _.each(list, (item, i, list) => {
+    res.push(iteratee.call(context, item, i, list));
   });
   return res;
 };
-
 
 
 
