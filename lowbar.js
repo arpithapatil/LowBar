@@ -172,6 +172,17 @@ _.every = (list, predicate, context = this) => {
   return res;
 };
 
+_.some = (list, predicate) => {
+  let res = false;
+  _.each(list, function (item) {
+    if (predicate(item)) {
+      res = true;
+      return res;
+    }
+  });
+  return res;
+};
+
 
 
 

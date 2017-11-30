@@ -530,4 +530,21 @@ describe('#every', () => {
       return i % this === 0;
     }, 2)).to.equal(true);
   });
+
+  it('returns true for invalid arguments', () => {
+    expect(_.every(5)).to.equal(true);
+    expect(_.every(null)).to.equal(true);
+    expect(_.every(undefined)).to.equal(true);
+  });
+});
+
+describe('#some', () => {
+  it('is a function', function () {
+    expect(_.some).to.be.a('function');
+  });
+
+  it('returns true if any item in an array passes predicate', () => {
+    expect(_.some([2, 4, 6, 7], (i) => i % 2 !== 0)).to.equal(true);
+    expect(_.some([1, 2, 3, 5], (i) => i % 2 === 0)).to.equal(true);
+  });
 });
