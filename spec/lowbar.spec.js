@@ -511,7 +511,7 @@ describe('#every', () => {
     expect(_.every([1, 3, 5, 7], (i) => i % 2 !== 0)).to.equal(true);
   });
 
-  it('returns false if any item in a array fails predicate', () => {
+  it('returns false if any item in an array fails predicate', () => {
     expect(_.every([2, 3, 6, 8], (i) => i % 2 === 0)).to.equal(false);
     expect(_.every([1, 2, 5, 7], (i) => i % 2 !== 0)).to.equal(false);
   });
@@ -571,27 +571,33 @@ describe('#some', () => {
   });
 });
 
-describe('#extends', () => {
+describe('#extend', () => {
   it('is a function', function () {
-    expect(_.extends).to.be.a('function');
+    expect(_.extend).to.be.a('function');
   });
   it('returns joined object ', () => {
-    expect(_.extends({a:1, b:2, c:3}, {a:4, d:5})).to.eql({a:4, b:2, c:3, d:5});
-    expect(_.extends({a:1, b:2, c:3}, {a:4, d:5}, {e:6})).to.eql({a:4, b:2, c:3, d:5, e:6});
-    
+    expect(_.extend({ a: 1, b: 2, c: 3 }, { a: 4, d: 5 })).to.eql({ a: 4, b: 2, c: 3, d: 5 });
+    expect(_.extend({ a: 1, b: 2, c: 3 }, { a: 4, d: 5 }, { e: 6 })).to.eql({ a: 4, b: 2, c: 3, d: 5, e: 6 });
+
   });
 
   it('returns joined object with nested objects', () => {
-    const start = {a:1}; 
-    const nested = {b:{c:2}}; 
-    const joined = _.extends(start, nested); 
-    expect(joined).to.eql({a:1, b:{c:2}});
+    const start = { a: 1 };
+    const nested = { b: { c: 2 } };
+    const joined = _.extend(start, nested);
+    expect(joined).to.eql({ a: 1, b: { c: 2 } });
   });
 
   it('tests that nested objects are referneces and not duplicates', () => {
-    const start = {a:1}; 
-    const nested = {b:{c:2}}; 
-    const joined = _.extends(start, nested); 
+    const start = { a: 1 };
+    const nested = { b: { c: 2 } };
+    const joined = _.extend(start, nested);
     expect(joined.b).to.equal(nested.b);
+  });
+
+  it('edge cases', () => {
+    expect(_.extend(5)).to.equal(5);
+    expect(_.extend(undefined)).to.equal(undefined);
+    expect(_.extend([])).to.eql([]);
   });
 });

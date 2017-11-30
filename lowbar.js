@@ -183,7 +183,7 @@ _.some = (list, predicate, context = this) => {
   return res;
 };
 
-_.extends = (start, ...objects) => {
+_.extend = (start, ...objects) => {
   return _.reduce(objects, (acc, item) => {
     for (let key in item) {
       acc[key] = item[key];
@@ -191,7 +191,6 @@ _.extends = (start, ...objects) => {
     return acc;
   }, start);
 };
-
 
 
 
