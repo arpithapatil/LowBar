@@ -619,3 +619,18 @@ describe('#defaults', () => {
     expect(_.extend([])).to.eql([]);
   });
 });
+
+describe('#shuffle', () => {
+  it('it is a function', () => {
+    expect(_.shuffle).to.be.a('function');
+  });
+  it('it returns the shuffled copy of the list ', () => {
+    const array = [1, 2, 3, 4, 5];
+    const str = 'apple';
+    const object = { 0: 0, 1: 1, 2: 2, 3: 3 };
+    expect(_.shuffle(array)).to.not.eql(array);
+    expect(_.shuffle(str)).to.not.eql(str);
+    expect(_.shuffle(object)).to.not.eql(object);
+  });
+});
+
