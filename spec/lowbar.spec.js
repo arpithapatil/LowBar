@@ -308,5 +308,21 @@ describe('#reject', function () {
     expect(_.reject({}, fn)).to.eql([]);
   });
 });
+
+describe('#uniq', function () {
+  it('is a function', function () {
+    expect(_.uniq).to.be.a('function');
+  });
   
+  it('returns duplicate free version of the array', function () {
+    expect(_.uniq([1, 2, 3, 4, 2, 1])).to.eql([1, 2, 3, 4]);
+    expect(_.uniq([5, 8, 33, 15, 33, 5])).to.eql([5, 8, 33, 15]);
+  });
+  
+  it('returns duplicate free version of the string', function () {
+    expect(_.uniq('apple')).to.eql(['a', 'p', 'l', 'e']);
+    expect(_.uniq('abcb')).to.eql(['a', 'b', 'c']);
+  });
+
+});
   

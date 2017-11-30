@@ -117,6 +117,14 @@ _.reject = (list, predicate, context=this) => {
   return _.filter.call(null, list, rev, context);
 };
 
+_.uniq = (list) => {
+  const res = [];
+  _.each(list, (item) => {
+    if(_.indexOf(res, item) === -1) res.push(item);
+  });
+  return res;
+};
+
 
 
 
