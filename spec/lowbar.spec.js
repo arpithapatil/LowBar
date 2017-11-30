@@ -692,3 +692,14 @@ describe('#invoke', () => {
   });
 });
 
+describe('#sortBy', () => {
+  it('it is a function', () => {
+    expect(_.sortBy).to.be.a('function');
+  });
+
+  it('returns array that is sorted in ascending order by iteratee', () => {
+    expect(_.sortBy([1,2,3,4,5], (item) => {
+      return Math.cos(item);
+    })).to.eql([3,4,2,5,1]);
+  });
+});

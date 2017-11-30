@@ -220,6 +220,7 @@ _.shuffle = (list) => {
   return newList;
 };
 
+
 _.once = (func) => {
   let toCall = true;
   return () => {
@@ -237,6 +238,12 @@ _.invoke = (list, method, ...args) => {
   });
 };
 
+_.sortBy = (list, iteratee) => {
+  const res = _.map(list); 
+  return res.sort((a,b) => {
+    return iteratee(a)-iteratee(b);
+  });
+};
 
 
 
