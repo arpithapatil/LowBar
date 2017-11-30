@@ -549,18 +549,24 @@ describe('#some', () => {
   });
 
   it('returns false if no items in an array pass the predicate', () => {
-    expect(_.some([2,4,6,8], (i) => i%2!==0)).to.equal(false);
-    expect(_.some([1,3,5,7], (i) => i%2===0)).to.equal(false);	
+    expect(_.some([2, 4, 6, 8], (i) => i % 2 !== 0)).to.equal(false);
+    expect(_.some([1, 3, 5, 7], (i) => i % 2 === 0)).to.equal(false);
   });
 
   it('works when objects are passed as an argument', () => {
-    expect(_.some({a:1, b:2, c:3}, (i) => i%2!==0)).to.equal(true);
-    expect(_.some({a:2,b:4,c:7,d:8}, (i) => i%2===0)).to.equal(true);
+    expect(_.some({ a: 1, b: 2, c: 3 }, (i) => i % 2 !== 0)).to.equal(true);
+    expect(_.some({ a: 2, b: 4, c: 7, d: 8 }, (i) => i % 2 === 0)).to.equal(true);
   });
 
   it('applies context to _.some', () => {
-    expect(_.some({a:2,b:7,c:9,d:11}, function (i) {
-      return i%this===0;
-    }, 2)).to.equal(true);	
+    expect(_.some({ a: 2, b: 7, c: 9, d: 11 }, function (i) {
+      return i % this === 0;
+    }, 2)).to.equal(true);
+  });
+
+  it('returns true for invalid arguments', () => {
+    expect(_.some(5)).to.equal(false);
+    expect(_.some(null)).to.equal(false);
+    expect(_.some(undefined)).to.equal(false);
   });
 });
