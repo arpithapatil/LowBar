@@ -587,4 +587,11 @@ describe('#extends', () => {
     const joined = _.extends(start, nested); 
     expect(joined).to.eql({a:1, b:{c:2}});
   });
+
+  it('tests that nested objects are referneces and not duplicates', () => {
+    const start = {a:1}; 
+    const nested = {b:{c:2}}; 
+    const joined = _.extends(start, nested); 
+    expect(joined.b).to.equal(nested.b);
+  });
 });
