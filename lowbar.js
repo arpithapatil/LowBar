@@ -103,9 +103,14 @@ _.filter = (list, predicate, context=this) => {
 };
 
 _.negate = (predicate) => {
-  return () => {
+  return function () {
     return !predicate.apply(this, arguments);
   };
+};
+
+_.reject = (list, predicate) => {
+  const rev = _.negate(predicate); 
+  return _.filter.call(null, list, rev);
 };
 
 

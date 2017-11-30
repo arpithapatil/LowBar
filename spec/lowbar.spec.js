@@ -260,4 +260,16 @@ describe('#negate', () => {
     expect(isFalse()).to.equal(false);
   });
 });
+
+describe('#reject', function () {
+  it('is a function', function () {
+    expect(_.reject).to.be.a('function');
+  });
+  
+  it('returns an array of elements that fails the truth test', function () {
+    expect(_.reject([1, 2, 3, 4, 5, 6], function check(num) { return num % 2 === 0; })).to.eql([1, 3, 5]);
+    expect(_.reject([2, 4, 5, 6, 10, 11], function check(num) { return num % 2 === 0; })).to.eql([5, 11]);
+  });
+});
+  
   
