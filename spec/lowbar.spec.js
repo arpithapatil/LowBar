@@ -437,5 +437,10 @@ describe('#contains', () => {
   it('returns false if value not in object', () => {
     expect(_.contains({a:1,b:2,c:3}, 4)).to.equal(false);
   });
+
+  it('returns true or false when indexFrom argument is included', () => {
+    expect(_.contains([1,2,3,4,5], 5, 3)).to.equal(true);
+    expect(_.contains([1,2,3,4,5], 1, 1)).to.equal(false);
+  });
 });
   

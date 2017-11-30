@@ -139,14 +139,14 @@ _.map = (list, iteratee=_.identity, context=this) => {
   return res;
 };
 
-_.contains = (list, value) => {
+_.contains = (list, value, indexFrom=0) => {
   if (!Array.isArray(list) && typeof list === 'object') {
     for (let key in list) {
       if (list[key] === value) return true;
     }
     return false;
   }
-  return _.indexOf(list, value) !== -1 ? true : false; 
+  return _.indexOf(list.slice(indexFrom), value) !== -1 ? true : false; 
 };
 
 
