@@ -203,10 +203,12 @@ _.defaults = (start, ...objects) => {
   }, start);
 };
 
+
 _.shuffle = (list) => {
   var newList = [];
   if (typeof list === 'string') newList = list.split('');
   if (typeof list === 'object') newList = Object.values(list);
+  
   newList = newList.slice();
   let n = newList.length, placeholder, index;
   while (n) {
@@ -215,7 +217,7 @@ _.shuffle = (list) => {
     newList[n] = newList[index];
     newList[index] = placeholder;
   }
-  
+  return newList;
 };
 
 
