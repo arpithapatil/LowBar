@@ -433,5 +433,9 @@ describe('#contains', () => {
   it('returns true if value in object', () => {
     expect(_.contains({a:1,b:2,c:3}, 3)).to.equal(true);
   });
+  
+  it('returns false if value not in object', () => {
+    expect(_.contains({a:1,b:2,c:3}, 4)).to.equal(false);
+  });
 });
   
