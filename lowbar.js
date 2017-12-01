@@ -249,15 +249,22 @@ _.sortBy = (list, iteratee = _.identity, context = this) => {
 };
 
 
-
 _.zip = (...args) => {
-  return _.reduce(args, (acc, item) => {
-    if (typeof item === 'string') acc.push(item);
-    if (typeof item === 'object') acc.concat(_.values(item));
-    return acc;
-  }, []);
-};
+  const result = [];
+  if (!_.every(args, item => typeof item === 'string' || Array.isArray(item)
+  )) return result;
 
+  _.each(args, (list, i) => {
+
+    if (typeof list === 'string') result[i] = list;
+        
+    else _.each(list, (item, j) => {
+      if (result[j] === undefined) result[j] = [];
+      result[j][i] = item;
+    });
+  });
+  return result;
+};
 
 
 
