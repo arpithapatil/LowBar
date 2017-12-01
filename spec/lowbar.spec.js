@@ -811,3 +811,13 @@ describe('#flatten', () => {
     expect(_.flatten({})).to.eql([]);
   });
 });
+
+describe('#intersection', () => {
+  it('it is a function', () => {
+    expect(_.intersection).to.be.a('function');
+  });
+
+  it('returns array which contains only interescting valuse', () => {
+    expect(_.intersection([1,2,3], [1,2,5,6], [1,2,9])).to.eql([1,2]);
+  });
+});

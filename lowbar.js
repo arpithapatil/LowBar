@@ -306,6 +306,17 @@ _.flatten = (list, shallow=false) => {
 
 
 
+_.intersection = (...lists) => {
+  const res = [];
+  _.each(lists[0], item => {
+    if (_.every(lists, (list) => {
+      return _.contains(list, item);
+    })) res.push(item);
+  });
+  return res; 
+};
+
+
 
 
 
