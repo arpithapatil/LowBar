@@ -884,3 +884,22 @@ describe.only('#memoize', () => {
   });
  
 });
+
+describe('#delay', () => {
+  it('it is a function', () => {
+    expect(_.delay).to.be.a('function');
+  });
+  beforeEach(() => {
+    this.clock = sinon.useFakeTimers(); 
+  });
+  afterEach(() => {
+    this.clock.restore();
+  });
+  it('calls passed function after set period of ms', () => {
+    const spy = sinon.spy(); 
+    _.delay(spy, 200);
+    expect(spy.callCount).to.equal(0); 
+    this.clock.tick(200); 
+    expect(spy.callCount).to.equal(1); 			
+  });
+});
