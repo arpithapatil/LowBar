@@ -780,4 +780,11 @@ describe('#sortedIndex', () => {
       return this.multiply(item);
     }, context)).to.equal(3);
   });
+
+  it('returns 0 if invalid argument is passed', () => {
+    expect(_.sortedIndex(5)).to.equal(0);
+    expect(_.sortedIndex(undefined)).to.equal(0);
+    expect(_.sortedIndex([])).to.equal(0);
+    expect(_.sortedIndex({})).to.equal(0);
+  });
 });
