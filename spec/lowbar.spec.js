@@ -745,4 +745,12 @@ describe('#zip', () => {
   it('returns an array with elements that are undefined when number and dimension of arrays do not match', () => {
     expect(_.zip([1,2,3], ['a', 'b'])).to.eql([[1,'a'], [2, 'b'], [3, undefined]]);
   });
+
+  it('it returns an empty array when not given an array or string', () => {
+    expect(_.zip()).to.eql([]);
+    expect(_.zip(false)).to.eql([]);
+    expect(_.zip(null)).to.eql([]);
+    expect(_.zip(1)).to.eql([]);
+    expect(_.zip({a:'a', b:'b'})).to.eql([]);
+  });
 });
