@@ -339,6 +339,18 @@ _.where = (list, properties) => {
   });
 };
 
+_.throttle = (func, wait) => {
+  let callFunc = true; 
+  return () => {
+    if (callFunc) {
+      let res = func.apply(this, arguments);
+      callFunc = false; 
+      setTimeout(() => callFunc = true, wait); 
+      return res;
+    }
+  };
+};
+
 
 
 

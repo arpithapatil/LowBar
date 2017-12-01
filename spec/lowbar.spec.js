@@ -994,3 +994,31 @@ describe('#where', () => {
 
 });
 
+describe('#throttle', () => {
+  it('it is a function', () => {
+    expect(_.throttle).to.be.a('function');
+  });
+
+  beforeEach(() => {
+    this.clock = sinon.useFakeTimers(); 
+  });
+  afterEach(() => {
+    this.clock.restore();
+  });
+  it('calls the passed functon only once per wait period', () => {
+    const spy = sinon.spy();
+    const throttled = _.throttle(spy, 200); 
+    throttled();
+    throttled();
+    throttled();
+    throttled();
+    throttled();			
+    throttled();			
+    expect(spy.callCount).to.equal(1);
+    this.clock.tick(200); 
+    throttled();
+    expect(spy.callCount).to.equal(2);
+  });
+});
+
+
