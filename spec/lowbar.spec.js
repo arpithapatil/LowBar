@@ -836,9 +836,17 @@ describe('#difference', () => {
 
   it('returns values which are not present in other arrays', () => {
     expect(_.difference([1,2,3,4,5], [3,4,5])).to.eql([1,2]);
+    expect(_.difference(['a', 'b', 'c', 'd'], ['c', 'd'])).to.eql(['a', 'b']);
   });
 
   it('returns values present in object but not in other array', () => {
     expect(_.difference({a:1, b:2, c:3, d:4, e:5}, [3,4,5])).to.eql([1,2]);
+  });
+
+  it('returns empty array if invalid argument is passed', () => {
+    expect(_.difference(5)).to.eql([]);
+    expect(_.difference(undefined)).to.eql([]);
+    expect(_.difference([])).to.eql([]);
+    expect(_.difference({})).to.eql([]);
   });
 });
