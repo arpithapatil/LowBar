@@ -828,3 +828,13 @@ describe('#intersection', () => {
     expect(_.intersection({})).to.eql([]);
   });
 });
+
+describe('#difference', () => {
+  it('it is a function', () => {
+    expect(_.difference).to.be.a('function');
+  });
+
+  it('returns values which are not present in other arrays', () => {
+    expect(_.difference([1,2,3,4,5], [3,4,5])).to.eql([1,2]);
+  });
+});

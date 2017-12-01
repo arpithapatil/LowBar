@@ -203,7 +203,6 @@ _.defaults = (start, ...objects) => {
   }, start);
 };
 
-
 _.shuffle = (list) => {
   var newList = [];
   if (typeof list === 'string') newList = list.split('');
@@ -220,7 +219,6 @@ _.shuffle = (list) => {
   return newList;
 };
 
-
 _.once = (func) => {
   let toCall = true;
   return () => {
@@ -231,13 +229,11 @@ _.once = (func) => {
   };
 };
 
-
 _.invoke = (list, method, ...args) => {
   return _.map(list, (item) => {
     return item[method](args);
   });
 };
-
 
 _.sortBy = (list, iteratee = _.identity, context = this) => {
   if (typeof list !== 'object') return [];
@@ -247,7 +243,6 @@ _.sortBy = (list, iteratee = _.identity, context = this) => {
     return iteratee(a) - iteratee(b);
   });
 };
-
 
 _.zip = (...args) => {
   const result = [];
@@ -289,7 +284,6 @@ _.sortedIndex= (list, value, iteratee=_.identity, context=this) => {
   return low; 
 };
 
-
 _.flatten = (list, shallow=false) => {
   const res = [];
   const flat = (list) => {
@@ -304,8 +298,6 @@ _.flatten = (list, shallow=false) => {
   return flat(list);
 };
 
-
-
 _.intersection = (...lists) => {
   const res = [];
   _.each(lists[0], item => {
@@ -314,6 +306,11 @@ _.intersection = (...lists) => {
     })) res.push(item);
   });
   return res; 
+};
+
+_.difference = (list, ...others) => {
+  return _.filter(list, item => 
+    _.every(others, otherItem => !_.contains(otherItem, item)));
 };
 
 
