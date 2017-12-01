@@ -754,3 +754,15 @@ describe('#zip', () => {
     expect(_.zip({a:'a', b:'b'})).to.eql([]);
   });
 });
+
+describe('#sortedIndex', () => {
+  it('it is a function', () => {
+    expect(_.sortedIndex).to.be.a('function');
+  });
+
+  it('returns correct index at whch value should be inserted to sorted array', () => {
+    expect(_.sortedIndex([1,2,3,5], 4)).to.equal(3);
+    expect(_.sortedIndex([1,3,4,5], 2)).to.equal(1);
+    expect(_.sortedIndex([1,3,4,5,7,8,9], 10)).to.equal(6);   
+  });
+});
