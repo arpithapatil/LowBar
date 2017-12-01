@@ -931,4 +931,10 @@ describe('#where', () => {
     ];
     expect(_.where(arr, {a:2, b:3})).to.eql(res);
   });
+
+  it('returns an array from the string containing the properties passed', () => {
+    expect(_.where('abc', {0: 'a'})).to.eql(['a']);
+    expect(_.where('abc', {0: 'b'})).to.eql(['b']);
+    expect(_.where('abc', {0: 'c'})).to.eql(['c']);
+  });
 });
