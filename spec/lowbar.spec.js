@@ -820,4 +820,11 @@ describe('#intersection', () => {
   it('returns array which contains only interescting valuse', () => {
     expect(_.intersection([1,2,3], [1,2,5,6], [1,2,9])).to.eql([1,2]);
   });
+
+  it('returns empty array if invalid argument is passed', () => {
+    expect(_.intersection(5)).to.eql([]);
+    expect(_.intersection(undefined)).to.eql([]);
+    expect(_.intersection([])).to.eql([]);
+    expect(_.intersection({})).to.eql([]);
+  });
 });
