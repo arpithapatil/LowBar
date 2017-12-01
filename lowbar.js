@@ -249,21 +249,14 @@ _.sortBy = (list, iteratee = _.identity, context = this) => {
 };
 
 
-_.zip = (...arrays) => {
-  const res = []; 
-  _.each(arrays, (arr) => {
-    _.each(arr, (item, j) => {
-      if (!res[j]) {
-        res[j] = [item]; 
-      }
-      else {
-        res[j].push(item); 
-      }
-    });
-  });
-  return res;
+
+_.zip = (...args) => {
+  return _.reduce(args, (acc, item) => {
+    if (typeof item === 'string') acc.push(item);
+    if (typeof item === 'object') acc.concat(_.values(item));
+    return acc;
+  }, []);
 };
-  
 
 
 

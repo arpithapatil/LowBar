@@ -730,7 +730,8 @@ describe('#zip', () => {
     expect(_.zip).to.be.a('function');
   });
 
-  it('returns zipped array', () => {
-    expect(_.zip([1,2,3], [4,5,6], [7,8,9])).to.eql([[1,4,7], [2,5,8], [3,6,9]]);
+  it('it returns an array when given a list of strings as arguments', () => {
+    expect(_.zip('a','b')).to.eql(['a', 'b']);
   });
+  
 });
