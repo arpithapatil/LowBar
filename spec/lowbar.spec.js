@@ -889,6 +889,7 @@ describe('#delay', () => {
   it('it is a function', () => {
     expect(_.delay).to.be.a('function');
   });
+
   beforeEach(() => {
     this.clock = sinon.useFakeTimers(); 
   });
@@ -909,5 +910,25 @@ describe('#delay', () => {
     _.delay(spy, 200, 'a', 'b');
     this.clock.tick(200); 
     expect(spy.calledWithExactly('a', 'b')).to.equal(true);
+  });
+});
+
+describe('#where', () => {
+  it('it is a function', () => {
+    expect(_.where).to.be.a('function');
+  });
+
+  it('returns array of objects which have the properties passed as second argument', () => {
+    const arr = [
+      {a:2, b:3, c:4}, 
+      {a:1, c:9}, 
+      {a:2, b:3, d:4}, 
+      {c:2, d:8}
+    ];
+    const res = [
+      {a:2, b:3, c:4},
+      {a:2, b:3, d:4}
+    ];
+    expect(_.where(arr, {a:2, b:3})).to.eql(res);
   });
 });

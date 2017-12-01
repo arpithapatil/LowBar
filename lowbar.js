@@ -327,4 +327,19 @@ _.memoize = function (fn) {
 _.delay = (func, wait=0, ...args) => {
   setTimeout(func, wait, ...args);
 };
+
+_.where = (list, properties) => {
+    
+  return _.filter(list, item => {
+    let flag = true;
+    for (let key in properties) {
+      if (item[key] !== properties[key]) flag = false; 
+    }
+    return flag;
+  });
+};
+
+
+
+
 module.exports = _;
