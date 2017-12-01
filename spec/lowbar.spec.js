@@ -803,4 +803,11 @@ describe('#flatten', () => {
     const arr = [1,2,[3,4,5,[6,7], 8], 9]; 			
     expect(_.flatten(arr, true)).to.eql([1,2,3,4,5,[6,7], 8, 9]);
   });
+
+  it('returns empty array if invalid argument is passed', () => {
+    expect(_.flatten(5)).to.eql([]);
+    expect(_.flatten(undefined)).to.eql([]);
+    expect(_.flatten([])).to.eql([]);
+    expect(_.flatten({})).to.eql([]);
+  });
 });
