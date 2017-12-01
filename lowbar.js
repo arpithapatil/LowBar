@@ -287,7 +287,20 @@ _.sortedIndex= (list, value, iteratee=_.identity, context=this) => {
     }		
   }
   return low; 
-}; 
+};
+
+
+_.flatten = (list) => {
+  const res = [];
+  const flat = (list) => {
+    _.each(list, (item) => {
+      if (Array.isArray(item)) flat(item); 
+      else res.push(item);
+    });
+    return res; 
+  }; 
+  return flat(list);
+};
 
 
 

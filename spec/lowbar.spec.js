@@ -786,5 +786,16 @@ describe('#sortedIndex', () => {
     expect(_.sortedIndex(undefined)).to.equal(0);
     expect(_.sortedIndex([])).to.equal(0);
     expect(_.sortedIndex({})).to.equal(0);
+  }); 
+});
+
+describe('#flatten', () => {
+  it('it is a function', () => {
+    expect(_.flatten).to.be.a('function');
+  });
+
+  it('returns flattened array when given nested array', () => {
+    const arr = [1,2,[3,4,5,[6,7], 8], 9]; 
+    expect(_.flatten(arr)).to.eql([1,2,3,4,5,6,7,8,9]);
   });
 });
