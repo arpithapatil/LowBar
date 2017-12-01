@@ -851,7 +851,7 @@ describe('#difference', () => {
   });
 });
 
-describe.only('#memoize', () => {
+describe('#memoize', () => {
   it('it is a function', () => {
     expect(_.memoize).to.be.a('function');
   });
@@ -895,6 +895,7 @@ describe('#delay', () => {
   afterEach(() => {
     this.clock.restore();
   });
+
   it('calls passed function after set period of ms', () => {
     const spy = sinon.spy(); 
     _.delay(spy, 200);

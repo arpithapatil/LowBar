@@ -327,5 +327,4 @@ _.memoize = function (fn) {
 _.delay = (func, wait) => {
   setTimeout(func, wait);
 };
-
 module.exports = _;
