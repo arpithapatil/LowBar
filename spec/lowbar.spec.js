@@ -948,4 +948,49 @@ describe('#where', () => {
     expect(_.where('a')).to.eql(['a']);
     expect(_.where('ab')).to.eql(['a','b']);
   });
+
+  it('returns an array from the array containing the properties passed', () => {
+    const list = [
+      {
+        name: 'batman',
+        age: 34,
+        gender: 'male'
+      },
+      {
+        name: 'superman',
+        age: 29,
+        gender: 'male'
+      },
+      {
+        name: 'wonderwoman',
+        age: 31,
+        gender: 'female'
+      },
+      {
+        name: 'catwoman',
+        age: 25,
+        gender: 'female'
+      }
+    ];
+    expect(_.where(list, {gender: 'female'})).to.eql([
+      {
+        name: 'wonderwoman',
+        age: 31,
+        gender: 'female'
+      },
+      {
+        name: 'catwoman',
+        age: 25,
+        gender: 'female'
+      }
+    ]);
+    expect(_.where(list, {age: 29})).to.eql([{
+      name:'superman',
+      age: 29,
+      gender: 'male'
+    }]);
+
+  });
+
 });
+
