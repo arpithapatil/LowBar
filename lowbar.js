@@ -353,11 +353,11 @@ _.throttle = (func, wait) => {
   
 _.partial = (func, ...args) => {
   const partialFn = (...partArgs) => {
+    if (args.length === 0) return func(...partArgs);
     return func(...args, ...partArgs); 
   };
   return partialFn;
 };
-
 
 
 

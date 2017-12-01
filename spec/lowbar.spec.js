@@ -1038,6 +1038,12 @@ describe('#partial', () => {
     const sub5 = _.partial(sub, 5); 
     expect(sub5(20)).to.equal(15);
   });
+
+  it('returns partial has same functionality as passed function when no second argument passed', () => {
+    const sub = (a, b) => b-a; 
+    const subPart = _.partial(sub); 
+    expect(subPart(5, 20)).to.equal(15);			
+  });
 });
 
 
