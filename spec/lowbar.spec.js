@@ -1028,4 +1028,16 @@ describe('#throttle', () => {
 
 });
 
+describe('#partial', () => {
+  it('it is a function', () => {
+    expect(_.partial).to.be.a('function');
+  });
+
+  it('returns function with arguments partially passed', () => {
+    const sub = (a, b) => b-a; 
+    const sub5 = _.partial(sub, 5); 
+    expect(sub5(20)).to.equal(15);
+  });
+});
+
 

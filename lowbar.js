@@ -339,7 +339,6 @@ _.where = (list, properties) => {
   });
 };
 
-
 _.throttle = (func, wait) => {
   let callFunc = true; 
   return function () {
@@ -352,7 +351,12 @@ _.throttle = (func, wait) => {
   };
 };
   
-
+_.partial = (func, ...args) => {
+  const partialFn = (...partArgs) => {
+    return func(...args, ...partArgs); 
+  };
+  return partialFn;
+};
 
 
 
