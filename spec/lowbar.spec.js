@@ -1050,6 +1050,16 @@ describe('#partial', () => {
     const subPart = _.partial(sub, _, 20); 			
     expect(subPart(5)).to.equal(15);
   });
+
+  it('does not change this value of original function', () => {
+    const context = {no:20}; 
+    let sub = function (a) {
+      return this.no-a;
+    }; 		
+    sub = sub.bind(context); 
+    const subPart = _.partial(sub); 	
+    expect(subPart(10)).to.equal(10);
+  });
 });
 
 
