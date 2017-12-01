@@ -268,7 +268,12 @@ _.zip = (...args) => {
   return result;
 };
 
-_.sortedIndex= (list, value) => {
+_.sortedIndex= (list, value, iteratee=_.identity) => {
+  if (typeof iteratee === 'function') {
+    list = _.map(list, (item) => iteratee(item));
+    value = iteratee(value);
+  }
+  if (typeof iteratee === 'string')  list = _.pluck(list, iteratee);
   let low = 0; 
   let high = list.length-1; 
   while (low < high) {
@@ -279,6 +284,7 @@ _.sortedIndex= (list, value) => {
     if (list[mid] < value) {
       low = mid+1; 
     }
+		
   }
   return low; 
 }; 

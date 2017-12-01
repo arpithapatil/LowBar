@@ -765,4 +765,12 @@ describe('#sortedIndex', () => {
     expect(_.sortedIndex([1,3,4,5], 2)).to.equal(1);
     expect(_.sortedIndex([1,3,4,5,7,8,9], 10)).to.equal(6);   
   });
+
+  it('applies iteratee to sort', () => {
+    expect(_.sortedIndex([1,2,3,4], 5, (n) => Math.cos(n))).to.equal(3);
+  });
+  
+  it('if iteratee is a string sort objects using iteratee as key', () => {
+    expect(_.sortedIndex([{a:1, b:2}, {a:3, b:1}, {a:4, c:1}], 2, 'a')).to.equal(1);
+  });
 });
