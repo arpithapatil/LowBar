@@ -1044,6 +1044,12 @@ describe('#partial', () => {
     const subPart = _.partial(sub); 
     expect(subPart(5, 20)).to.equal(15);			
   });
+
+  it('passing _ specifies argument should not be pre-filled in', () => {
+    const sub = (a, b) => b-a; 
+    const subPart = _.partial(sub, _, 20); 			
+    expect(subPart(5)).to.equal(15);
+  });
 });
 
 

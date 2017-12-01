@@ -354,7 +354,11 @@ _.throttle = (func, wait) => {
 _.partial = (func, ...args) => {
   const partialFn = (...partArgs) => {
     if (args.length === 0) return func(...partArgs);
-    return func(...args, ...partArgs); 
+    const argsNew = _.map(args, arg => {
+      if (arg === _) return partArgs.shift();
+      return arg;
+    });
+    return func(...argsNew, ...partArgs); 
   };
   return partialFn;
 };
