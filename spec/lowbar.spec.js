@@ -798,4 +798,9 @@ describe('#flatten', () => {
     const arr = [1,2,[3,4,5,[6,7], 8], 9]; 
     expect(_.flatten(arr)).to.eql([1,2,3,4,5,6,7,8,9]);
   });
+
+  it('flattens one level of array when true is passed as second argument', () => {
+    const arr = [1,2,[3,4,5,[6,7], 8], 9]; 			
+    expect(_.flatten(arr, true)).to.eql([1,2,3,4,5,[6,7], 8, 9]);
+  });
 });

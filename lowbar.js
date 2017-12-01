@@ -290,18 +290,19 @@ _.sortedIndex= (list, value, iteratee=_.identity, context=this) => {
 };
 
 
-_.flatten = (list) => {
+_.flatten = (list, shallow=false) => {
   const res = [];
   const flat = (list) => {
     _.each(list, (item) => {
-      if (Array.isArray(item)) flat(item); 
+      if (Array.isArray(item)) {
+        !shallow ? flat(item) : res.push(...item);
+      } 
       else res.push(item);
     });
     return res; 
   }; 
   return flat(list);
 };
-
 
 
 
