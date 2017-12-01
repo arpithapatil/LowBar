@@ -864,5 +864,14 @@ describe.only('#memoize', () => {
     const memAdd = _.memoize(add);
     expect(memAdd(1,2)).to.equal(3);
   });
+
+  it('function only called once if same argument is passed multiple times', () => {
+    const spy = sinon.spy(); 
+    const spyMem = _.memoize(spy); 
+    spyMem('hello');
+    spyMem('hello');
+    spyMem('hello');			
+    expect(spy.callCount).to.equal(1);
+  });
  
 });

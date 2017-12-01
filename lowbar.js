@@ -313,13 +313,16 @@ _.difference = (list, ...others) => {
     _.every(others, otherItem => !_.contains(otherItem, item)));
 };
 
-_.memoize = (func) => {
-  return function(...args) {
-    return func(...args);
-  };
-};
-
-
+_.memoize = function (fn) {
+	let returnFn = function(arg) {
+		if (!(arg in returnFn.cache)) {
+			returnFn.cache[arg] = fn.apply(this, arguments);
+		}
+		return returnFn.cache[arg]
+	}
+	returnFn.cache = {}; 
+	return returnFn;
+}
 
 
 module.exports = _;
