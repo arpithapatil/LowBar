@@ -903,4 +903,11 @@ describe('#delay', () => {
     this.clock.tick(200); 
     expect(spy.callCount).to.equal(1); 			
   });
+
+  it('calls function with passed arguments', () => {
+    const spy = sinon.spy(); 
+    _.delay(spy, 200, 'a', 'b');
+    this.clock.tick(200); 
+    expect(spy.calledWithExactly('a', 'b')).to.equal(true);
+  });
 });
