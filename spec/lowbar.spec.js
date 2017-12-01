@@ -873,5 +873,14 @@ describe.only('#memoize', () => {
     spyMem('hello');			
     expect(spy.callCount).to.equal(1);
   });
+
+  it('caches result of passed function', () => {
+    const double = (n) => n*2; 
+    const doubleMem = _.memoize(double); 
+    doubleMem(2); 
+    doubleMem(4); 
+    doubleMem(8); 
+    expect(doubleMem.cache).to.eql({2:4, 4:8, 8:16});			
+  });
  
 });

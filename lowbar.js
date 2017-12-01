@@ -314,15 +314,15 @@ _.difference = (list, ...others) => {
 };
 
 _.memoize = function (fn) {
-	let returnFn = function(arg) {
-		if (!(arg in returnFn.cache)) {
-			returnFn.cache[arg] = fn.apply(this, arguments);
-		}
-		return returnFn.cache[arg]
-	}
-	returnFn.cache = {}; 
-	return returnFn;
-}
+  let returnFn = function(arg) {
+    if (!(arg in returnFn.cache)) {
+      returnFn.cache[arg] = fn.apply(this, arguments);
+    }
+    return returnFn.cache[arg];
+  };
+  returnFn.cache = {}; 
+  return returnFn;
+};
 
 
 module.exports = _;
