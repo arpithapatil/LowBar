@@ -268,8 +268,9 @@ _.zip = (...args) => {
   return result;
 };
 
-_.sortedIndex= (list, value, iteratee=_.identity) => {
+_.sortedIndex= (list, value, iteratee=_.identity, context=this) => {
   if (typeof iteratee === 'function') {
+    iteratee = iteratee.bind(context);
     list = _.map(list, (item) => iteratee(item));
     value = iteratee(value);
   }
@@ -283,12 +284,10 @@ _.sortedIndex= (list, value, iteratee=_.identity) => {
     }
     if (list[mid] < value) {
       low = mid+1; 
-    }
-		
+    }		
   }
   return low; 
 }; 
-
 
 
 

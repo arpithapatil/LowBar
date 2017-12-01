@@ -769,8 +769,15 @@ describe('#sortedIndex', () => {
   it('applies iteratee to sort', () => {
     expect(_.sortedIndex([1,2,3,4], 5, (n) => Math.cos(n))).to.equal(3);
   });
-  
+
   it('if iteratee is a string sort objects using iteratee as key', () => {
     expect(_.sortedIndex([{a:1, b:2}, {a:3, b:1}, {a:4, c:1}], 2, 'a')).to.equal(1);
+  });
+
+  it('applies context to iteratee', () => {
+    const context = {multiply: item => item * 2};
+    expect(_.sortedIndex([1,2,3,5], 4, function (item) {
+      return this.multiply(item);
+    }, context)).to.equal(3);
   });
 });
