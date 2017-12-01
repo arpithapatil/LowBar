@@ -937,4 +937,15 @@ describe('#where', () => {
     expect(_.where('abc', {0: 'b'})).to.eql(['b']);
     expect(_.where('abc', {0: 'c'})).to.eql(['c']);
   });
+
+  it('returns an empty array when not an object or string', () => {
+    expect(_.where()).to.eql([]);
+    expect(_.where(5)).to.eql([]);
+    expect(_.where(true)).to.eql([]);
+  });
+
+  it('returns an array when given a string', () => {
+    expect(_.where('a')).to.eql(['a']);
+    expect(_.where('ab')).to.eql(['a','b']);
+  });
 });
