@@ -339,9 +339,10 @@ _.where = (list, properties) => {
   });
 };
 
+
 _.throttle = (func, wait) => {
   let callFunc = true; 
-  return () => {
+  return function () {
     if (callFunc) {
       let res = func.apply(this, arguments);
       callFunc = false; 
@@ -350,6 +351,9 @@ _.throttle = (func, wait) => {
     }
   };
 };
+  
+
+
 
 
 

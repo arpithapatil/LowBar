@@ -1019,6 +1019,13 @@ describe('#throttle', () => {
     throttled();
     expect(spy.callCount).to.equal(2);
   });
+
+  it('returns result of passed function', () => {
+    const double = (n) => n*2; 
+    const doublThrottle = _.throttle(double); 
+    expect(doublThrottle(2)).to.equal(4);
+  });
+
 });
 
 
