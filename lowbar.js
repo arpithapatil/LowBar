@@ -261,14 +261,13 @@ _.zip = (...args) => {
 
     if (typeof list === 'string') result[i] = list;
         
-    else _.each(list, (item, j) => {
-      if (result[j] === undefined) result[j] = [];
-      result[j][i] = item;
-    });
+    else for (let j = 0; j < args[0].length; j++) {
+      if (result[j]  === undefined) result[j] = [];
+      result[j][i] = args[i][j];
+    }
   });
   return result;
 };
-
 
 
 

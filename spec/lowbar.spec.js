@@ -741,4 +741,8 @@ describe('#zip', () => {
   it('it returns an array when given one string', () => {
     expect(_.zip('ab')).to.eql([['a'], ['b']]);
   });
+
+  it('returns an array with elements that are undefined when number and dimension of arrays do not match', () => {
+    expect(_.zip([1,2,3], ['a', 'b'])).to.eql([[1,'a'], [2, 'b'], [3, undefined]]);
+  });
 });
