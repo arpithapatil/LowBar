@@ -313,6 +313,11 @@ _.difference = (list, ...others) => {
     _.every(others, otherItem => !_.contains(otherItem, item)));
 };
 
+_.memoize = (func) => {
+  return function(...args) {
+    return func(...args);
+  };
+};
 
 
 

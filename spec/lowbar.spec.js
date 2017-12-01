@@ -850,3 +850,19 @@ describe('#difference', () => {
     expect(_.difference({})).to.eql([]);
   });
 });
+
+describe.only('#memoize', () => {
+  it('it is a function', () => {
+    expect(_.memoize).to.be.a('function');
+  });
+
+  it('returns a function that behaves the same way as the function passed', () => {
+    const hello = () => 'hello';
+    const memHello = _.memoize(hello);
+    expect(memHello()).to.equal('hello');
+    const add = (a,b) => a + b;
+    const memAdd = _.memoize(add);
+    expect(memAdd(1,2)).to.equal(3);
+  });
+ 
+});
