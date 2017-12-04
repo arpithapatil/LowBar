@@ -30,7 +30,7 @@ To run this library first clone it onto your local machine and install the depen
 
 To clone, navigate to the prefered directory and enter following into terminal:
 
-<code>git clone https://github.com/arpithapatil/LowBar.git</code>
+<code>git clone  https://github.com/arpithapatil/LowBar.git</code>
 
 Then navigate inside the LowBar directory and install it's dependencies by entering the following into terminal:
 
