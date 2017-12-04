@@ -8,21 +8,21 @@ Node.js must be installed on your machine
 
 You can check if Node is installed by entering the following into your terminal:
 
-node -v
+<code>node -v</code>
 
-If Node is not installed you can do so by following this [guide.] (https://nodejs.org/en/download/package-manager/)
+If Node is not installed you can do so by following this <a href="https://nodejs.org/en/download/package-manager/" rel="nofollow">guide.</a> 
 
 NPM must also be installed on your machine, to see if you have it enter the following into your terminal:
 
-npm -v
+<code>npm -v</code>
 
-If you do not have npm please follow this [guide] (https://www.npmjs.com/get-npm) to install.
+If you do not have npm please follow this <a href="https://www.npmjs.com/get-npm" rel="nofollow">guide</a> to install.
 
 Git must also be installed, check you have it by entering the following into your terminal:
 
-git --version
+<code>git --version</code>
 
-Git can be installed on your machine by following this [guide.] (https://git-scm.com/)
+Git can be installed on your machine by following this <a href="https://git-scm.com/" rel="nofollow">guide.</a>
 
 # Installation
 
@@ -30,15 +30,15 @@ To run this library first clone it onto your local machine and install the depen
 
 To clone, navigate to the prefered directory and enter following into terminal:
 
-git clone https://github.com/arpithapatil/LowBar
+<code>git clone https://github.com/arpithapatil/LowBar</code>
 
 Then navigate inside the lowbar directory and install it's dependencies by entering the following into terminal:
 
-npm install
+<code>npm install</code>
 
 To run the tests script run this command on the terminal:
 
-npm test
+<code>npm test</code>
 
 # Methods implemented
 
