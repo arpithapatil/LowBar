@@ -534,30 +534,34 @@ describe('#some', () => {
 
 describe('#extend', () => {
 
-  it('returns joined object ', () => {
-    expect(_.extend({ a: 1, b: 2, c: 3 }, { a: 4, d: 5 })).to.eql({ a: 4, b: 2, c: 3, d: 5 });
-    expect(_.extend({ a: 1, b: 2, c: 3 }, { a: 4, d: 5 }, { e: 6 })).to.eql({ a: 4, b: 2, c: 3, d: 5, e: 6 });
-
+  it('returns joined object', () => {
+    expect(_.extend({name:'Bob'}, {age: 26})).to.eql({name: 'Bob', age: 26});
+    expect(_.extend({name:'Bob', age: 23}, {age: 26}, {car: 'Audi'})).to.eql({name: 'Bob', age: 26, car: 'Audi'});
   });
 
-  it('returns joined object with nested objects', () => {
-    const start = { a: 1 };
-    const nested = { b: { c: 2 } };
-    const joined = _.extend(start, nested);
-    expect(joined).to.eql({ a: 1, b: { c: 2 } });
+  it('does not merge non object sources into the destination', () => {
+    expect(_.extend({name: 'Bob'},{age: 20}, 7)).to.eql({name: 'Bob', age: 20}); 
+    expect(_.extend({name: 'Bob'},{age: 20}, [7])).to.eql({0: 7,name: 'Bob', age: 20}); 
   });
 
   it('tests that nested objects are referneces and not duplicates', () => {
-    const start = { a: 1 };
-    const nested = { b: { c: 2 } };
-    const joined = _.extend(start, nested);
+    const start = {fruit:'apple'}; 
+    const nested = {color:{car:'Audi'}}; 
+    const joined = _.extend(start, nested); 
     expect(joined.b).to.equal(nested.b);
   });
 
-  it('edge cases', () => {
-    expect(_.extend(5)).to.equal(5);
-    expect(_.extend(undefined)).to.equal(undefined);
-    expect(_.extend([])).to.eql([]);
+  it('returns joined object with nested objects', () => {
+    expect(_.extend({name: 'Bob'}, {favourites: {color: 'pink'}})).to.eql({name: 'Bob', favourites: {color: 'pink'}});
+  });
+  
+  it('returns the destination if only proper inputs given', () => {
+    const str = 'apple', arr = ['apple'], obj = {0:'apple'}, num = 7, undef = undefined;
+    expect(_.extend(arr)).to.equal(arr);
+    expect(_.extend(str)).to.equal(str);
+    expect(_.extend(obj)).to.equal(obj);
+    expect(_.extend(num)).to.equal(num);
+    expect(_.extend(undef)).to.equal(undef);
   });
 });
 
