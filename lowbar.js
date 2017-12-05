@@ -41,7 +41,7 @@ _.last = function (list, n) {
   }
 };
 
-_.each = (list, iteratee, context = this) => {
+_.each = (list, iteratee=_.identity, context = this) => {
   if (typeof list === 'string') {
     for (var i = 0; i < list.length; i++)
       iteratee.call(context, list[i], i, list);
@@ -87,7 +87,7 @@ _.indexOf = (list, value, isSorted) => {
   return res;
 };
 
-_.filter = (list, predicate, context = this) => {
+_.filter = (list, predicate=_.identity, context = this) => {
   const res = [];
   if (list === undefined || list === null) return [];
   if (typeof list === 'string') {
@@ -106,7 +106,7 @@ _.negate = (predicate) => {
   };
 };
 
-_.reject = (list, predicate, context = this) => {
+_.reject = (list, predicate=_.identity, context = this) => {
   if (typeof list === 'string') {
     list = list.split('');
   }
@@ -149,7 +149,7 @@ _.contains = (list, value, indexFrom = 0) => {
 
 _.pluck = (list, propertyName) => _.map(list, (item) => item[propertyName]);
 
-_.reduce = (list, iteratee, acc, context = this) => {
+_.reduce = (list, iteratee=_.identity, acc, context = this) => {
   iteratee = iteratee.bind(context);
   if (!acc) {
     acc = list[0];
@@ -161,7 +161,7 @@ _.reduce = (list, iteratee, acc, context = this) => {
   return acc;
 };
 
-_.every = (list, predicate, context = this) => {
+_.every = (list, predicate=_.identity, context = this) => {
   let res = true;
   _.each(list, function (item) {
     if (!predicate.call(context, item)) {
@@ -362,8 +362,5 @@ _.partial = (func, ...args) => {
   };
   return partialFn;
 };
-
-
-
 
 module.exports = _;
